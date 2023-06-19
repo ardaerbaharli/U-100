@@ -8,7 +8,32 @@
 - Metin Yalçınkaya: Developer
 - Polen İzgi: Developer
 
-## Sprint 1
+## Urun ismi
+
+- Undead Dungeon
+
+## Urun Aciklamasi
+
+- Karakterimiz, bir dungeonda kendisine saldıran yaratıklar karşısında hayatta kalmaya çalışıyor.
+
+## Urun Ozellikleri
+
+- Top-down shooter deneyimi.
+- Hızlı ve akıcı oynayış
+- Tatmin edici oynanış
+- Dungeon teması
+
+## Hedef Kitle
+
+- 13 yaş ve üstü oyuncular
+- 8bit temasını sevenler
+- Top-down shooter sevenler 
+
+## Kullanilan Assetler
+
+- Undead Asseat Pack (https://deepdivegamestudio.itch.io/undead-asset-pack)
+
+# Sprint 1
 
 ### Sprint notları
 
