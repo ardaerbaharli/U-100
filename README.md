@@ -16,7 +16,7 @@
 
 - Karakterimiz, bir dungeonda kendisine saldıran yaratıklar karşısında hayatta kalmaya çalışıyor.
 
-## Ürün Ozellikleri
+## Ürün Özellikleri
 
 - Top-down shooter deneyimi.
 - Hızlı ve akıcı oynayış
@@ -31,7 +31,12 @@
 
 ## Kullanılan Assetler
 
-- Undead Asseat Pack (https://deepdivegamestudio.itch.io/undead-asset-pack)
+- Undead Asset Pack (https://deepdivegamestudio.itch.io/undead-asset-pack)
+- Humanoid 2 Asset Pack (https://deepdivegamestudio.itch.io/humanoid2-asset-pack)
+
+## Proje Yönetimi
+
+- https://trello.com/b/camZcisL/u100
 
 # Sprint 1
 
@@ -44,7 +49,18 @@
 - Oyun fikirlerinin tartışılması
 - GDD örnekleri incelenmesi
 
-<img width="701" alt="image" src="https://github.com/sudeyaprak/U-100/assets/119863892/f33d235d-6656-45e2-b393-f72843fddef2">
+<img width="952" alt="image" src="https://github.com/sudeyaprak/U-100/assets/119863892/2d177492-489e-4e10-89cb-fd1c56bcbba3">
+
+- Ana Karakter
+
+  ![image](https://github.com/sudeyaprak/U-100/assets/119863892/2b072292-f49a-4f60-8d24-1fbe30707a8f)
+ 
+- Diger Karakterler 
+ 
+  ![image](https://github.com/sudeyaprak/U-100/assets/119863892/dbf3c57d-6f0d-4405-9107-f914f3a28fed)
+ 
+  ![image](https://github.com/sudeyaprak/U-100/assets/119863892/95241d68-c460-4309-80a5-746c0c0fad6c)
+
 
 ### Sprint Retrospective
 
