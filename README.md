@@ -8,15 +8,15 @@
 - Metin Yalçınkaya: Developer
 - Polen İzgi: Developer
 
-## Urun ismi
+## Ürün ismi
 
 - Undead Dungeon
 
-## Urun Aciklamasi
+## Ürün Açıklaması
 
 - Karakterimiz, bir dungeonda kendisine saldıran yaratıklar karşısında hayatta kalmaya çalışıyor.
 
-## Urun Ozellikleri
+## Ürün Ozellikleri
 
 - Top-down shooter deneyimi.
 - Hızlı ve akıcı oynayış
@@ -29,7 +29,7 @@
 - 8bit temasını sevenler
 - Top-down shooter sevenler 
 
-## Kullanilan Assetler
+## Kullanılan Assetler
 
 - Undead Asseat Pack (https://deepdivegamestudio.itch.io/undead-asset-pack)
 
