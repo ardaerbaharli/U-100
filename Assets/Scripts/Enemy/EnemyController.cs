@@ -18,6 +18,7 @@ namespace Enemy
 
         [NonSerialized] public Direction Direction;
         private readonly Direction startDirection = Direction.Right;
+        public Action OnEnemyDied;
 
         private void Awake()
         {
@@ -53,6 +54,11 @@ namespace Enemy
         {
             _enemyProperty = enemyProperty;
             sprite.sprite = enemyProperty.Sprite;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            // TODO: get hit
         }
     }
 }

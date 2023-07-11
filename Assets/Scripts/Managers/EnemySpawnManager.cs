@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Enemy;
 using Levels;
@@ -16,12 +17,16 @@ namespace Managers
 
         private float _cameraSize;
 
+        private List<EnemyController> activeEnemies;
+
 
         private PlayerManager _player;
-
+        public static EnemySpawnManager Instance;
         private void Awake()
         {
+            Instance = this;
             _cameraSize = Helpers.Camera.orthographicSize;
+            activeEnemies = new List<EnemyController>();
         }
 
         private void Start()
@@ -67,7 +72,8 @@ namespace Managers
             enemy.pooledObject = enemyPooledObject;
             var position = GetPosition();
             enemy.transform.position = position;
-
+            activeEnemies.Add(enemy);
+            enemy.OnEnemyDied += () => activeEnemies.Remove(enemy);
             enemy.SetEnemyProperty(enemyProperty);
             enemy.gameObject.SetActive(true);
             enemy.StartFollowing(_player);
@@ -80,6 +86,18 @@ namespace Managers
             var y = Random.Range(-_cameraSize * 2, _cameraSize * 2);
             var position = new Vector2(x, y);
             return position;
+        }
+
+        public Vector2 GetClosestEnemyDirection(Vector3 target)
+        {
+            var closestEnemy = activeEnemies.OrderBy(enemy => Vector2.Distance(enemy.transform.position, target))
+                .FirstOrDefault();
+            if (closestEnemy == null)
+            {
+                return Vector2.zero;
+            }
+
+            return (closestEnemy.transform.position - target).normalized;
         }
     }
 }

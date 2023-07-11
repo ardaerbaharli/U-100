@@ -38,7 +38,8 @@ namespace Managers
     public enum PooledObjectType
     {
         Enemy,
-        Boss
+        Boss,
+        WandBullet
     }
 
     public class ObjectPool : MonoBehaviour

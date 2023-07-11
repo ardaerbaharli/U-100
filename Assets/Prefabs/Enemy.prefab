@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 401778579044661320}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 401778579183195443}
   isFollowingPlayer: 0
+  pooledObject:
+    name: 
+    gameObject: {fileID: 0}
+    transform: {fileID: 0}
+    type: 0
 --- !u!114 &401778579044661318
 MonoBehaviour:
   m_ObjectHideFlags: 0

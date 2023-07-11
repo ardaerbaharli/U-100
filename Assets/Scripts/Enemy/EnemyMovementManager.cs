@@ -11,6 +11,7 @@ namespace Enemy
         private float _speed;
 
         public Action OnFlip;
+        
 
         private void Awake()
         {
@@ -44,5 +45,7 @@ namespace Enemy
             _speed = speed;
             _player = player;
         }
+
+        
     }
 }

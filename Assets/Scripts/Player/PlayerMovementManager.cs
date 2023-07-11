@@ -12,7 +12,7 @@ namespace Player
     public class PlayerMovementManager : MonoBehaviour
     {
         [SerializeField] private float speed;
-        private Direction _direction;
+        public Direction _direction;
 
         public Action OnFlip;
         // use wasd to move the player on  the x and y axis
