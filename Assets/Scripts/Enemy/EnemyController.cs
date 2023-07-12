@@ -55,7 +55,7 @@ namespace Enemy
             _enemyProperty = enemyProperty;
             sprite.sprite = enemyProperty.Sprite;
         }
-
+        
         public void TakeDamage(float damage)
         {
             // TODO: get hit
