@@ -25,6 +25,7 @@ namespace Enemy
         private float _currentHealth;
         private void Awake()
         {
+            
             _enemyMovementManager = GetComponent<EnemyMovementManager>();
             _enemyMovementManager.OnFlip += FlipSprite;
         }
@@ -57,6 +58,8 @@ namespace Enemy
         {
             _enemyProperty = enemyProperty;
             sprite.sprite = enemyProperty.Sprite;
+            _maxHealth = enemyProperty.Health;
+            _currentHealth = _maxHealth;
         }
         
         public void TakeDamage(float damage)
