@@ -20,6 +20,9 @@ namespace Enemy
         private readonly Direction startDirection = Direction.Right;
         public Action OnEnemyDied;
 
+
+        private float _maxHealth;
+        private float _currentHealth;
         private void Awake()
         {
             _enemyMovementManager = GetComponent<EnemyMovementManager>();
@@ -58,7 +61,11 @@ namespace Enemy
         
         public void TakeDamage(float damage)
         {
-            // TODO: get hit
+            _currentHealth -= damage;
+            if (_currentHealth < 0)
+            {
+                //die
+            }
         }
     }
 }
