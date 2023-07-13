@@ -1,5 +1,4 @@
 using System.Collections;
-using Enemy;
 using Managers;
 using UnityEngine;
 
@@ -11,21 +10,30 @@ namespace Weapons
         private float _damage;
         private float _range;
         private float _speed;
+        private WeaponTarget _weaponTarget;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            if (_weaponTarget == WeaponTarget.Player)
             {
-                other.GetComponent<EnemyController>().TakeDamage(_damage);
+                if (!other.CompareTag("Player")) return;
+                other.GetComponent<Target>().TakeDamage(_damage);
+                ReturnToPool();
+            }
+            else if (_weaponTarget == WeaponTarget.Enemy)
+            {
+                if (!other.CompareTag("Enemy")) return;
+                other.GetComponent<Target>().TakeDamage(_damage);
                 ReturnToPool();
             }
         }
 
-        public void SetAmmoProperty(float damage, float speed, float range)
+        public void SetAmmoProperty(float damage, float speed, float range, WeaponTarget weaponTarget)
         {
             _damage = damage;
             _speed = speed;
             _range = range;
+            _weaponTarget = weaponTarget;
         }
 
         public void ReturnToPool()
@@ -36,6 +44,10 @@ namespace Weapons
 
         public void Shoot(Vector2 direction)
         {
+            // set rotation to face the direction
+            // var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            // transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
             StartCoroutine(ShootCoroutine(direction));
         }
 

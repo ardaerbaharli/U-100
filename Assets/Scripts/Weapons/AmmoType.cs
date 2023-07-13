@@ -2,6 +2,7 @@ namespace Weapons
 {
     public enum AmmoType
     {
-        Wand
+        Wand,
+        Arrow
     }
 }

@@ -71,8 +71,8 @@ namespace Managers
             enemy.transform.position = position;
             activeEnemies.Add(enemy);
             enemy.OnEnemyDied += () => activeEnemies.Remove(enemy);
-            enemy.SetEnemyProperty(enemyProperty);
             enemy.gameObject.SetActive(true);
+            enemy.SetEnemyProperty(enemyProperty);
             enemy.StartFollowing(_player);
         }
 
@@ -87,7 +87,8 @@ namespace Managers
 
         public Vector2 GetClosestEnemyDirection(Vector3 target)
         {
-            var closestEnemy = activeEnemies.OrderBy(enemy => Vector2.Distance(enemy.transform.position, target))
+            var closestEnemy = activeEnemies.Where(x => !x.isDead)
+                .OrderBy(enemy => Vector2.Distance(enemy.transform.position, target))
                 .FirstOrDefault();
             if (closestEnemy == null) return Vector2.zero;
 

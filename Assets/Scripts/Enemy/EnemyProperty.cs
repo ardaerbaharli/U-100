@@ -1,5 +1,6 @@
 using Enemy.EnemyTypes;
 using UnityEngine;
+using Weapons;
 
 namespace Enemy
 {
@@ -10,9 +11,8 @@ namespace Enemy
         public EnemyType Type;
         public bool IsBoss;
         public float Health;
-        public float Damage;
         public float Speed;
-        public float Range;
-        public float AttackCooldown;
+        public float StopDistance;
+        public WeaponType WeaponType;
     }
 }

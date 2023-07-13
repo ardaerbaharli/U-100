@@ -2,16 +2,19 @@ using System;
 using Managers;
 using Player;
 using UnityEngine;
+using Weapons;
 
 namespace Enemy
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : Target
     {
         [SerializeField] private SpriteRenderer sprite;
+        [SerializeField] private GameObject weaponParent;
 
         public bool isFollowingPlayer;
         public PooledObject pooledObject;
         public PlayerManager _player;
+        public bool isDead;
         private readonly Direction startDirection = Direction.Right;
         private float _currentHealth;
         private EnemyMovementManager _enemyMovementManager;
@@ -61,17 +64,19 @@ namespace Enemy
             sprite.sprite = enemyProperty.Sprite;
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
-
+            // AddWeapon(enemyProperty.WeaponType);
+            var w = WeaponManager.Instance.AddWeapon(weaponParent, enemyProperty.WeaponType);
+            w.WeaponTarget = WeaponTarget.Player;
             OnPropertySet?.Invoke(_enemyProperty);
         }
 
-        public void TakeDamage(float damage)
+
+        public override void TakeDamage(float damage)
         {
             _currentHealth -= damage;
             if (_currentHealth < 0)
             {
-                //die
-                transform.position = new Vector3(1000, 0, 0);
+                isDead = true;
                 ReturnToPool();
             }
         }

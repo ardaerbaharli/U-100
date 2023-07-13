@@ -4,11 +4,13 @@ using Weapons;
 
 namespace Player
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : Target
     {
         public static PlayerManager Instance;
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Direction characterStartDirection;
+        [SerializeField] private GameObject weaponParent;
+
         public PlayerMovementManager playerMovementManager;
         [SerializeField] private float _maxHealth;
         private float _currentHealth;
@@ -20,7 +22,8 @@ namespace Player
         private void Awake()
         {
             Instance = this;
-            _weapon = GetComponentInChildren<Weapon>();
+
+
             playerMovementManager = GetComponent<PlayerMovementManager>();
             playerMovementManager.SetDirection(characterStartDirection);
             playerMovementManager.OnFlip += FlipSprite;
@@ -28,6 +31,8 @@ namespace Player
 
         private void Start()
         {
+            _weapon = WeaponManager.Instance.AddWeapon(weaponParent, WeaponType.Wand);
+            _weapon.WeaponTarget = WeaponTarget.Enemy;
             GameManager.Instance.OnGameStarted += OnGameStarted;
             _currentHealth = _maxHealth;
         }
@@ -35,16 +40,14 @@ namespace Player
         private void OnGameStarted()
         {
             _isDead = false;
-            _weapon.Attack();
         }
 
-        public void TakeDamage(float damage)
+        public override void TakeDamage(float damage)
         {
             if (_isDead) return;
             _currentHealth -= damage;
             if (_currentHealth < 0)
             {
-                //die
                 _isDead = true;
                 GameManager.Instance.GameOver();
             }

@@ -20,3 +20,4 @@ MonoBehaviour:
   Speed: 1
   Range: 0.3
   AttackCooldown: 1
+  WeaponType: 1

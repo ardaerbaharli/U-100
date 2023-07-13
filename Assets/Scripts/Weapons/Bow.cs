@@ -2,11 +2,11 @@ using Managers;
 
 namespace Weapons
 {
-    public class Wand : RangedWeapon
+    public class Bow : RangedWeapon
     {
         private void Awake()
         {
-            AmmoPooledObjectType = PooledObjectType.WandAmmo;
+            AmmoPooledObjectType = PooledObjectType.Arrow;
         }
     }
 }

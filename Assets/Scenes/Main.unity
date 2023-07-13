@@ -307,7 +307,11 @@ MonoBehaviour:
     parent: {fileID: 1215499964}
   - type: 2
     gameObject: {fileID: 5634089730518767722, guid: 18300539b93914f7792e919b8874acdb, type: 3}
-    amount: 50
+    amount: 15
+    parent: {fileID: 272838040}
+  - type: 3
+    gameObject: {fileID: 5634089730518767722, guid: 3544b9451766e4280846edbe6abe0f7b, type: 3}
+    amount: 15
     parent: {fileID: 272838040}
   isPoolSet: 0
 --- !u!1 &519420028
@@ -526,7 +530,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 583745571}
-  - component: {fileID: 583745572}
   m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
@@ -549,23 +552,6 @@ Transform:
   m_Father: {fileID: 803953814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &583745572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583745570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443fc128c55e4502aa48a15bdd6a6752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 1
-  Speed: 3
-  Range: 4
-  AttackInterval: 1
-  ammoType: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 2078589959}
   characterStartDirection: 1
+  weaponParent: {fileID: 583745570}
   playerMovementManager: {fileID: 0}
   _maxHealth: 15
 --- !u!4 &803953814
@@ -741,7 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a8bcd8c5d143f0ace429d2d4fa0ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   _direction: 0
 --- !u!61 &803953816
 BoxCollider2D:
@@ -906,9 +893,54 @@ Transform:
   - {fileID: 1257517298}
   - {fileID: 880988106}
   - {fileID: 1554278982}
+  - {fileID: 1177877166}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1177877165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177877166}
+  - component: {fileID: 1177877167}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177877166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177877165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1154698278}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177877167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177877165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0067cf8e6e47ad9250d829abb8de40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215499963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1047,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257517297}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1526,6 +1558,10 @@ PrefabInstance:
     - target: {fileID: 5634089730518767722, guid: 18300539b93914f7792e919b8874acdb, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634089730518767722, guid: 18300539b93914f7792e919b8874acdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18300539b93914f7792e919b8874acdb, type: 3}

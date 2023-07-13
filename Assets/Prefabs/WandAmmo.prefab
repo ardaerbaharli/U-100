@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5634089730518767716}
   - component: {fileID: 5634089730518767723}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: WandAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.54197156, g: 0.09714311, b: 0.5566038, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,9 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c7a4225e1a47079aeeb12b1a6c9b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
-  Speed: 2
-  Range: 3
   PooledObject:
     name: 
     gameObject: {fileID: 0}

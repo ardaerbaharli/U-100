@@ -39,7 +39,8 @@ namespace Managers
     {
         Enemy,
         Boss,
-        WandBullet
+        WandAmmo,
+        Arrow
     }
 
     public class ObjectPool : MonoBehaviour
