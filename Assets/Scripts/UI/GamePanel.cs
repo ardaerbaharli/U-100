@@ -1,4 +1,3 @@
-using Managers;
 using TMPro;
 using UnityEngine;
 

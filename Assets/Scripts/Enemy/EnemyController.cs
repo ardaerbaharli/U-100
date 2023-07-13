@@ -11,14 +11,19 @@ namespace Enemy
 
         public bool isFollowingPlayer;
         public PooledObject pooledObject;
+        public PlayerManager _player;
+        private readonly Direction startDirection = Direction.Right;
+        private float _currentHealth;
         private EnemyMovementManager _enemyMovementManager;
 
         private EnemyProperty _enemyProperty;
-        private PlayerManager _player;
+
+
+        private float _maxHealth;
 
         [NonSerialized] public Direction Direction;
-        private readonly Direction startDirection = Direction.Right;
         public Action OnEnemyDied;
+        public Action<EnemyProperty> OnPropertySet;
 
         private void Awake()
         {
@@ -54,11 +59,21 @@ namespace Enemy
         {
             _enemyProperty = enemyProperty;
             sprite.sprite = enemyProperty.Sprite;
+            _maxHealth = enemyProperty.Health;
+            _currentHealth = _maxHealth;
+
+            OnPropertySet?.Invoke(_enemyProperty);
         }
 
         public void TakeDamage(float damage)
         {
-            // TODO: get hit
+            _currentHealth -= damage;
+            if (_currentHealth < 0)
+            {
+                //die
+                transform.position = new Vector3(1000, 0, 0);
+                ReturnToPool();
+            }
         }
     }
 }

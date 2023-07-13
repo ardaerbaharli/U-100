@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,21 +6,21 @@ using Levels;
 using Player;
 using UnityEngine;
 using WaveDesign;
-using Random = UnityEngine.Random;
 
 namespace Managers
 {
     public class EnemySpawnManager : MonoBehaviour
     {
+        public static EnemySpawnManager Instance;
         [SerializeField] private LevelProperty levelProperty;
 
         private float _cameraSize;
 
-        private List<EnemyController> activeEnemies;
-
 
         private PlayerManager _player;
-        public static EnemySpawnManager Instance;
+
+        private List<EnemyController> activeEnemies;
+
         private void Awake()
         {
             Instance = this;
@@ -54,13 +53,11 @@ namespace Managers
             var enemies = wave.Enemies.dictionary;
 
             foreach (var enemy in enemies)
-            {
-                for (int i = 0; i < enemy.value; i++)
+                for (var i = 0; i < enemy.value; i++)
                 {
                     SpawnEnemy(enemy.key);
                     yield return new WaitForSeconds(wave.SpawnInterval);
                 }
-            }
         }
 
         private void SpawnEnemy(EnemyProperty enemyProperty)
@@ -92,10 +89,7 @@ namespace Managers
         {
             var closestEnemy = activeEnemies.OrderBy(enemy => Vector2.Distance(enemy.transform.position, target))
                 .FirstOrDefault();
-            if (closestEnemy == null)
-            {
-                return Vector2.zero;
-            }
+            if (closestEnemy == null) return Vector2.zero;
 
             return (closestEnemy.transform.position - target).normalized;
         }
