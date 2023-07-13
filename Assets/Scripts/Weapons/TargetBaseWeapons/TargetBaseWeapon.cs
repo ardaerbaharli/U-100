@@ -5,12 +5,18 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public abstract class Weapon : MonoBehaviour
+    public abstract class TargetBaseWeapon : Weapon
     {
+        public bool TargetInRange;
+        public Target target;
+
+        private LayerMask _detectionLayer;
         private WeaponTarget _weaponTarget;
+        public Action<bool> TargetInRangeChanged;
+
         public WeaponTarget WeaponTarget
         {
-            get=> _weaponTarget;
+            get => _weaponTarget;
             set
             {
                 _weaponTarget = value;
@@ -22,14 +28,10 @@ namespace Weapons
                     target = PlayerManager.Instance;
             }
         }
-        public bool TargetInRange;
-        public Target target;
 
-        private LayerMask _detectionLayer;
-        public Action<bool> TargetInRangeChanged;
         public float Damage { get; private set; }
         public float Speed { get; private set; }
-        public float Range { get; private set; }
+        public float Range { get; set; }
         public float AttackInterval { get; private set; }
 
 
@@ -42,6 +44,12 @@ namespace Weapons
         private void OnDisable()
         {
             StopAllCoroutines();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, Range);
         }
 
         private IEnumerator AttackCoroutine()
@@ -79,12 +87,11 @@ namespace Weapons
 
         public void SetProperties(WeaponProperty getWeaponProperty)
         {
-            Damage = getWeaponProperty.Damage;
-            Speed = getWeaponProperty.Speed;
-            Range = getWeaponProperty.Range;
-            AttackInterval = getWeaponProperty.AttackInterval;
-            
-           
+            var targetBaseWeaponProperty = getWeaponProperty.TargetBaseWeaponProperty;
+            Damage = targetBaseWeaponProperty.Damage;
+            Speed = targetBaseWeaponProperty.Speed;
+            Range = targetBaseWeaponProperty.Range;
+            AttackInterval = targetBaseWeaponProperty.AttackInterval;
         }
     }
 }

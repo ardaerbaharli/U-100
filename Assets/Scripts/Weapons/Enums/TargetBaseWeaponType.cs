@@ -3,7 +3,7 @@ using System;
 namespace Weapons
 {
     [Serializable]
-    public enum WeaponType
+    public enum TargetBaseWeaponType
     {
         Wand,
         Melee,

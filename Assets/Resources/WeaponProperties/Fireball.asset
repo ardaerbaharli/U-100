@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08b4c6d8dc3446f38562a48ea115b310, type: 3}
-  m_Name: Melee
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  WeaponType: 0
+  WeaponType: 1
   TargetBaseWeaponProperty:
     Damage: 1
-    Speed: 1
-    Range: 0.15
+    Speed: 3
+    Range: 3
     AttackInterval: 1
-    WeaponType: 1
+    WeaponType: 0
   AreaWeaponProperty:
     WeaponType: 0
+    Damage: 1
+    WeaponPrefab: {fileID: 3968924927044264934, guid: c83c42663111049f99f40e514054587f, type: 3}

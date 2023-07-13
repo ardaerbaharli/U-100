@@ -1,6 +1,8 @@
 using System;
 using NaughtyAttributes;
+using Player;
 using UnityEngine;
+using Weapons;
 
 namespace Managers
 {
@@ -76,5 +78,29 @@ namespace Managers
             Debug.Log("Restart Game");
             // TODO
         }
+
+#if UNITY_EDITOR
+        // DEBUGGING
+        [Header("Debugging weapons")] [SerializeField]
+        private WeaponType weaponTypeToAddDebug;
+
+        [ShowIf("weaponTypeToAddDebug", WeaponType.TargetBase)] [SerializeField]
+        private TargetBaseWeaponType targetBaseWeaponTypeToAddDebug;
+
+        [ShowIf("weaponTypeToAddDebug", WeaponType.Area)] [SerializeField]
+        private AreaWeaponType areaWeaponTypeToAddDebug;
+
+        [Button]
+        public void AddWeaponDebug()
+        {
+            if (weaponTypeToAddDebug == WeaponType.TargetBase)
+                WeaponManager.Instance.AddWeapon(PlayerManager.Instance.weaponParent, targetBaseWeaponTypeToAddDebug);
+            else if (weaponTypeToAddDebug == WeaponType.Area)
+                WeaponManager.Instance.AddWeapon(PlayerManager.Instance.weaponParent, areaWeaponTypeToAddDebug,
+                    WeaponTarget.Enemy);
+        }
+
+
+#endif
     }
 }

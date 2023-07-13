@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b4c6d8dc3446f38562a48ea115b310, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  WeaponType: 2
-  Damage: 1
-  Speed: 3
-  Range: 3
-  AttackInterval: 1
+  WeaponType: 0
+  TargetBaseWeaponProperty:
+    Damage: 1
+    Speed: 3
+    Range: 1.5
+    AttackInterval: 1
+    WeaponType: 2
+  AreaWeaponProperty:
+    WeaponType: 0
+    Damage: 0
+    WeaponPrefab: {fileID: 0}

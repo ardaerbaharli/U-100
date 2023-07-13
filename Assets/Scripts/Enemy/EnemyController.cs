@@ -21,8 +21,8 @@ namespace Enemy
 
         private EnemyProperty _enemyProperty;
 
-
         private float _maxHealth;
+        private float _rangeAdvantage;
 
         [NonSerialized] public Direction Direction;
         public Action OnEnemyDied;
@@ -65,6 +65,7 @@ namespace Enemy
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
             // AddWeapon(enemyProperty.WeaponType);
+
             var w = WeaponManager.Instance.AddWeapon(weaponParent, enemyProperty.WeaponType);
             w.WeaponTarget = WeaponTarget.Player;
             OnPropertySet?.Invoke(_enemyProperty);
@@ -74,7 +75,7 @@ namespace Enemy
         public override void TakeDamage(float damage)
         {
             _currentHealth -= damage;
-            if (_currentHealth < 0)
+            if (_currentHealth <= 0)
             {
                 isDead = true;
                 ReturnToPool();

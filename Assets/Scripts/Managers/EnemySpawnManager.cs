@@ -67,11 +67,15 @@ namespace Managers
             var enemyPooledObject = ObjectPool.Instance.GetPooledObject(pooledObjectType);
             var enemy = enemyPooledObject.gameObject.GetComponent<EnemyController>();
             enemy.pooledObject = enemyPooledObject;
+
             var position = GetPosition();
             enemy.transform.position = position;
+
             activeEnemies.Add(enemy);
+
             enemy.OnEnemyDied += () => activeEnemies.Remove(enemy);
             enemy.gameObject.SetActive(true);
+
             enemy.SetEnemyProperty(enemyProperty);
             enemy.StartFollowing(_player);
         }

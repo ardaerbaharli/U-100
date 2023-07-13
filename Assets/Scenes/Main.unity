@@ -303,15 +303,15 @@ MonoBehaviour:
   objectToPool:
   - type: 0
     gameObject: {fileID: 401778579044661314, guid: 903031c9106de4e01baa7c0889d93078, type: 3}
-    amount: 50
+    amount: 80
     parent: {fileID: 1215499964}
   - type: 2
     gameObject: {fileID: 5634089730518767722, guid: 18300539b93914f7792e919b8874acdb, type: 3}
-    amount: 15
+    amount: 20
     parent: {fileID: 272838040}
   - type: 3
     gameObject: {fileID: 5634089730518767722, guid: 3544b9451766e4280846edbe6abe0f7b, type: 3}
-    amount: 15
+    amount: 70
     parent: {fileID: 272838040}
   isPoolSet: 0
 --- !u!1 &519420028
@@ -531,7 +531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583745571}
   m_Layer: 6
-  m_Name: Weapon
+  m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a8bcd8c5d143f0ace429d2d4fa0ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   _direction: 0
 --- !u!61 &803953816
 BoxCollider2D:
@@ -1347,6 +1347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalGameTime: 900
+  weaponTypeToAddDebug: 1
+  targetBaseWeaponTypeToAddDebug: 0
+  areaWeaponTypeToAddDebug: 0
 --- !u!1 &1969252836
 GameObject:
   m_ObjectHideFlags: 0

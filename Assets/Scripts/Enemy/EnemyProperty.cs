@@ -12,7 +12,6 @@ namespace Enemy
         public bool IsBoss;
         public float Health;
         public float Speed;
-        public float StopDistance;
-        public WeaponType WeaponType;
+        public TargetBaseWeaponType WeaponType;
     }
 }

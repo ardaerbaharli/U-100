@@ -8,7 +8,7 @@ namespace Enemy
         private EnemyController _enemyController;
         private EnemyProperty _enemyProperty;
 
-        private Weapon _weapon;
+        private TargetBaseWeapon _weapon;
 
 
         private void Awake()
@@ -22,7 +22,7 @@ namespace Enemy
         private void SetEnemyProperty(EnemyProperty obj)
         {
             _enemyProperty = obj;
-            _weapon = GetComponentInChildren<Weapon>();
+            _weapon = GetComponentInChildren<TargetBaseWeapon>();
             _weapon.TargetInRangeChanged += OnTargetInRangeChanged;
         }
 

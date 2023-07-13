@@ -20,31 +20,66 @@ namespace Managers
             _weaponProperties.AddRange(weaponProperties);
         }
 
-        public Weapon AddWeapon(GameObject to, WeaponType type)
+
+        public TargetBaseWeapon AddWeapon(GameObject to, TargetBaseWeaponType type, bool asChild = false)
         {
-            Weapon w;
+            Type t;
             switch (type)
             {
-                case WeaponType.Bow:
-                    w = to.AddComponent<Bow>();
+                case TargetBaseWeaponType.Bow:
+                    t = typeof(Bow);
                     break;
-                case WeaponType.Wand:
-                    w = to.AddComponent<Wand>();
+                case TargetBaseWeaponType.Wand:
+                    t = typeof(Wand);
                     break;
-                case WeaponType.Melee:
-                    w = to.AddComponent<MeleeWeapon>();
+                case TargetBaseWeaponType.Melee:
+                    t = typeof(MeleeWeapon);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
 
+            TargetBaseWeapon w;
+            if (asChild)
+            {
+                var child = new GameObject(type.ToString());
+                child.transform.parent = to.transform;
+                w = (TargetBaseWeapon) child.AddComponent(t);
+            }
+            else
+            {
+                w = (TargetBaseWeapon) to.AddComponent(t);
+            }
+
+
             w.SetProperties(GetWeaponProperty(type));
             return w;
         }
 
-        private WeaponProperty GetWeaponProperty(WeaponType type)
+        public AreaWeapon AddWeapon(GameObject to, AreaWeaponType type, WeaponTarget weaponTarget)
         {
-            return _weaponProperties.FirstOrDefault(weaponProperty => weaponProperty.WeaponType == type);
+            var properties = GetWeaponProperty(type);
+            var weapon = Instantiate(properties.AreaWeaponProperty.WeaponPrefab, to.transform.position,
+                Quaternion.identity);
+
+            weapon.transform.parent = to.transform;
+
+            var a = weapon.GetComponent<AreaWeapon>();
+            a.SetProperties(properties, weaponTarget);
+            return a;
+        }
+
+
+        private WeaponProperty GetWeaponProperty(AreaWeaponType type)
+        {
+            return _weaponProperties.Where(x => x.WeaponType == WeaponType.Area).FirstOrDefault(weaponProperty =>
+                weaponProperty.AreaWeaponProperty.WeaponType == type);
+        }
+
+        private WeaponProperty GetWeaponProperty(TargetBaseWeaponType type)
+        {
+            return _weaponProperties.Where(x => x.WeaponType == WeaponType.TargetBase).FirstOrDefault(weaponProperty =>
+                weaponProperty.TargetBaseWeaponProperty.WeaponType == type);
         }
     }
 }

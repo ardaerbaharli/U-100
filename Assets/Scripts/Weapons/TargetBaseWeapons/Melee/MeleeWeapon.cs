@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public class MeleeWeapon : Weapon
+    public class MeleeWeapon : TargetBaseWeapon
     {
         private float _cooldownTimer;
 

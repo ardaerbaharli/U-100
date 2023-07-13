@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public class RangedWeapon : Weapon
+    public class RangedWeapon : TargetBaseWeapon
     {
         private PlayerManager _player;
         protected PooledObjectType AmmoPooledObjectType;

@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Wand
   m_EditorClassIdentifier: 
   WeaponType: 0
-  Damage: 1
-  Speed: 3
-  Range: 5
-  AttackInterval: 1
+  TargetBaseWeaponProperty:
+    Damage: 1
+    Speed: 3
+    Range: 1.5
+    AttackInterval: 1
+    WeaponType: 0
+  AreaWeaponProperty:
+    WeaponType: 0
+    Damage: 0
+    WeaponPrefab: {fileID: 0}
