@@ -68,6 +68,8 @@ namespace Enemy
             if (_currentHealth < 0)
             {
                 //die
+                transform.position = new Vector3(1000,0,0);
+                ReturnToPool();
             }
         }
     }

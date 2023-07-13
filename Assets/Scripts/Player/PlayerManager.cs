@@ -15,6 +15,9 @@ namespace Player
         private Weapon _weapon;
 
 
+        [SerializeField] float _maxHealth;
+        private float _currentHealth;
+
         private void Awake()
         {
             Instance = this;
@@ -32,6 +35,14 @@ namespace Player
         private void OnGameStarted()
         {
             _weapon.Attack();
+        }
+        public void TakeDamage(float damage)
+        {
+            _currentHealth -= damage;
+            if (_currentHealth < 0)
+            {
+                //die
+            }
         }
 
         public void FlipSprite()

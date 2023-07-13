@@ -12,6 +12,7 @@ namespace Enemy
         [SerializeField] float _cooldown;
         private float cdTimer;
 
+
         bool playerDetected;
         public LayerMask detectionLayer;
          
@@ -22,6 +23,7 @@ namespace Enemy
         }
         private void Start()
         {
+            
             cdTimer = _cooldown;
         }
         private void Update()
