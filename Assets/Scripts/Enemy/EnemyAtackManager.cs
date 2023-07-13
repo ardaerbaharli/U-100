@@ -6,11 +6,13 @@ namespace Enemy
 {
     public class EnemyAtackManager : MonoBehaviour
     {
+        private EnemyProperty _enemyProperty;
         private EnemyController _enemyController;
-        private PlayerManager _player;
+        private GameObject _player;
         [SerializeField] float _range;
         [SerializeField] float _cooldown;
         private float cdTimer;
+        [SerializeField] float _damage;
 
 
         bool playerDetected;
@@ -23,8 +25,9 @@ namespace Enemy
         }
         private void Start()
         {
-            
+           
             cdTimer = _cooldown;
+            
         }
         private void Update()
         {
@@ -39,27 +42,25 @@ namespace Enemy
             
         }
         public void performDetection(){
-
+            
             Collider2D collider =Physics2D.OverlapCircle(transform.position, _range, detectionLayer);
             if(collider != null) { playerDetected = true;
                 _enemyController.isFollowingPlayer = false;
-
+                _player = collider.gameObject;
             }
             else { playerDetected = false;
                 _enemyController.isFollowingPlayer = true;
             }
+            
         }
         private void Atack()
         {
             cdTimer = _cooldown;
             _enemyController.isFollowingPlayer = false;
-            Debug.Log("atacked");
+            _player.GetComponent<PlayerManager>().TakeDamage(_damage);
+            //Debug.Log("atacked");
         }
-        public void StartFollowing(PlayerManager player, float speed)
-        {
-            
-            _player = player;
-        }
+        
        
         private void OnDrawGizmos()
         {

@@ -56,6 +56,7 @@ MonoBehaviour:
     gameObject: {fileID: 0}
     transform: {fileID: 0}
     type: 0
+  _player: {fileID: 0}
 --- !u!114 &401778579044661318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,8 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0155cd46199b037459fd21a6e7c986e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 1
+  _range: 0.5
   _cooldown: 1
+  _damage: 1
   detectionLayer:
     serializedVersion: 2
     m_Bits: 64

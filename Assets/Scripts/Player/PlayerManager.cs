@@ -30,6 +30,7 @@ namespace Player
         private void Start()
         {
             GameManager.Instance.OnGameStarted += OnGameStarted;
+            _currentHealth = _maxHealth;
         }
 
         private void OnGameStarted()
@@ -42,6 +43,7 @@ namespace Player
             if (_currentHealth < 0)
             {
                 //die
+                GameManager.Instance.GameOver();
             }
         }
 

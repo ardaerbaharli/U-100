@@ -14,7 +14,7 @@ namespace Enemy
         private EnemyMovementManager _enemyMovementManager;
 
         private EnemyProperty _enemyProperty;
-        private PlayerManager _player;
+        public PlayerManager _player;
 
         [NonSerialized] public Direction Direction;
         private readonly Direction startDirection = Direction.Right;
