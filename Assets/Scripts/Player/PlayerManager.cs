@@ -1,6 +1,4 @@
-using System;
 using Managers;
-using Unity.VisualScripting;
 using UnityEngine;
 using Weapons;
 
@@ -11,20 +9,21 @@ namespace Player
         public static PlayerManager Instance;
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Direction characterStartDirection;
-        public PlayerMovementManager _playerMovementManager;
-        private Weapon _weapon;
-
-
-        [SerializeField] float _maxHealth;
+        public PlayerMovementManager playerMovementManager;
+        [SerializeField] private float _maxHealth;
         private float _currentHealth;
+
+
+        private bool _isDead;
+        private Weapon _weapon;
 
         private void Awake()
         {
             Instance = this;
             _weapon = GetComponentInChildren<Weapon>();
-            _playerMovementManager = GetComponent<PlayerMovementManager>();
-            _playerMovementManager.SetDirection(characterStartDirection);
-            _playerMovementManager.OnFlip += FlipSprite;
+            playerMovementManager = GetComponent<PlayerMovementManager>();
+            playerMovementManager.SetDirection(characterStartDirection);
+            playerMovementManager.OnFlip += FlipSprite;
         }
 
         private void Start()
@@ -35,14 +34,18 @@ namespace Player
 
         private void OnGameStarted()
         {
+            _isDead = false;
             _weapon.Attack();
         }
+
         public void TakeDamage(float damage)
         {
+            if (_isDead) return;
             _currentHealth -= damage;
             if (_currentHealth < 0)
             {
                 //die
+                _isDead = true;
                 GameManager.Instance.GameOver();
             }
         }

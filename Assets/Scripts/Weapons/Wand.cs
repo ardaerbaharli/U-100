@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Enemy;
 using Managers;
 using Player;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Weapons

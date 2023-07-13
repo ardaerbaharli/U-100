@@ -11,21 +11,22 @@ namespace Enemy
 
         public bool isFollowingPlayer;
         public PooledObject pooledObject;
+        public PlayerManager _player;
+        private readonly Direction startDirection = Direction.Right;
+        private float _currentHealth;
         private EnemyMovementManager _enemyMovementManager;
 
         private EnemyProperty _enemyProperty;
-        public PlayerManager _player;
-
-        [NonSerialized] public Direction Direction;
-        private readonly Direction startDirection = Direction.Right;
-        public Action OnEnemyDied;
 
 
         private float _maxHealth;
-        private float _currentHealth;
+
+        [NonSerialized] public Direction Direction;
+        public Action OnEnemyDied;
+        public Action<EnemyProperty> OnPropertySet;
+
         private void Awake()
         {
-            
             _enemyMovementManager = GetComponent<EnemyMovementManager>();
             _enemyMovementManager.OnFlip += FlipSprite;
         }
@@ -60,15 +61,17 @@ namespace Enemy
             sprite.sprite = enemyProperty.Sprite;
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
+
+            OnPropertySet?.Invoke(_enemyProperty);
         }
-        
+
         public void TakeDamage(float damage)
         {
             _currentHealth -= damage;
             if (_currentHealth < 0)
             {
                 //die
-                transform.position = new Vector3(1000,0,0);
+                transform.position = new Vector3(1000, 0, 0);
                 ReturnToPool();
             }
         }

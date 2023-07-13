@@ -527,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583745571}
   - component: {fileID: 583745572}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,9 +689,9 @@ GameObject:
   - component: {fileID: 803953813}
   - component: {fileID: 803953815}
   - component: {fileID: 803953816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,7 +710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 2078589959}
   characterStartDirection: 1
-  _playerMovementManager: {fileID: 0}
+  playerMovementManager: {fileID: 0}
+  _maxHealth: 15
 --- !u!4 &803953814
 Transform:
   m_ObjectHideFlags: 0
@@ -1326,7 +1327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2078589958}
   - component: {fileID: 2078589959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

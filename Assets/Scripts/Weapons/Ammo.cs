@@ -1,18 +1,25 @@
 using System.Collections;
 using Enemy;
 using Managers;
-using Player;
 using UnityEngine;
 
 namespace Weapons
 {
     public class Ammo : MonoBehaviour
     {
-        private float _damage;
-        private float _speed;
-        private float _range;
-
         public PooledObject PooledObject;
+        private float _damage;
+        private float _range;
+        private float _speed;
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<EnemyController>().TakeDamage(_damage);
+                ReturnToPool();
+            }
+        }
 
         public void SetAmmoProperty(float damage, float speed, float range)
         {
@@ -25,15 +32,6 @@ namespace Weapons
         {
             StopAllCoroutines();
             PooledObject.ReturnToPool();
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Enemy"))
-            {
-                other.GetComponent<EnemyController>().TakeDamage(_damage);
-                ReturnToPool();
-            }
         }
 
         public void Shoot(Vector2 direction)

@@ -47,8 +47,8 @@ namespace Managers
             GameState = GameState.GameOver;
             // TODO
         }
-        
-        [Button()]
+
+        [Button]
         public void StartGame()
         {
             Debug.Log("Game Started");
