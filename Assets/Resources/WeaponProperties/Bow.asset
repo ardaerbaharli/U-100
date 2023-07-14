@@ -12,14 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b4c6d8dc3446f38562a48ea115b310, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  Sprite: {fileID: 0}
+  Name: Bow
   WeaponType: 0
+  MaxLevel: 10
   TargetBaseWeaponProperty:
-    Damage: 1
-    Speed: 3
-    Range: 1.5
-    AttackInterval: 1
     WeaponType: 2
+    UpgradeData:
+    - UpgradeDescription: Base
+      Damage: 1
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 1
+    - UpgradeDescription: Increase damage
+      Damage: 1.2
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 1
+    - UpgradeDescription: Increase damage
+      Damage: 1.5
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 1
+    - UpgradeDescription: Increase damage
+      Damage: 2
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 1
+    - UpgradeDescription: Increase damage
+      Damage: 3
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 1
+    - UpgradeDescription: Decrease attack interval
+      Damage: 3
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 0.8
+    - UpgradeDescription: Decrease attack interval
+      Damage: 3
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 0.7
+    - UpgradeDescription: Increase damage
+      Damage: 5
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 0.7
+    - UpgradeDescription: Increase damage
+      Damage: 7
+      Speed: 3
+      Range: 1.5
+      AttackInterval: 0.7
+    - UpgradeDescription: Increase speed
+      Damage: 7
+      Speed: 4
+      Range: 1.5
+      AttackInterval: 0.7
   AreaWeaponProperty:
     WeaponType: 0
-    Damage: 0
     WeaponPrefab: {fileID: 0}
+    UpgradeData: []

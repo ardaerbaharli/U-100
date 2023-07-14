@@ -1,4 +1,5 @@
 using System;
+using Collectables;
 using Managers;
 using Player;
 using UnityEngine;
@@ -27,10 +28,12 @@ namespace Enemy
         [NonSerialized] public Direction Direction;
         public Action OnEnemyDied;
         public Action<EnemyProperty> OnPropertySet;
+        private Animator _animator;
 
         private void Awake()
         {
             _enemyMovementManager = GetComponent<EnemyMovementManager>();
+            _animator = GetComponent<Animator>();
             _enemyMovementManager.OnFlip += FlipSprite;
         }
 
@@ -64,9 +67,11 @@ namespace Enemy
             sprite.sprite = enemyProperty.Sprite;
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
-            // AddWeapon(enemyProperty.WeaponType);
+
+            _animator.runtimeAnimatorController = enemyProperty.animator;
 
             var w = WeaponManager.Instance.AddWeapon(weaponParent, enemyProperty.WeaponType);
+            w.Damage *= enemyProperty.DamageMultiplier;
             w.WeaponTarget = WeaponTarget.Player;
             OnPropertySet?.Invoke(_enemyProperty);
         }
@@ -77,9 +82,16 @@ namespace Enemy
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
-                isDead = true;
-                ReturnToPool();
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            LevelManager.Instance.PointsReceived(_maxHealth);
+            CollectableManager.Instance.SpawnCollectable(CollectableType.Coin, transform.position);
+            isDead = true;
+            ReturnToPool();
         }
     }
 }

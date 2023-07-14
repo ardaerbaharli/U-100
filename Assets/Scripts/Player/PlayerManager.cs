@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Managers;
 using UnityEngine;
 using Weapons;
@@ -18,13 +19,15 @@ namespace Player
 
 
         private bool _isDead;
-        private TargetBaseWeapon _weapon;
+        private TargetBaseWeapon _firstWeapon;
+        private List<Weapon> _weapons;
 
         private void Awake()
         {
-            _collider = GetComponent<BoxCollider2D>();
             Instance = this;
 
+            _collider = GetComponent<BoxCollider2D>();
+            _weapons = new List<Weapon>();
 
             playerMovementManager = GetComponent<PlayerMovementManager>();
             playerMovementManager.SetDirection(characterStartDirection);
@@ -33,9 +36,11 @@ namespace Player
 
         private void Start()
         {
-            _weapon = WeaponManager.Instance.AddWeapon(weaponParent, TargetBaseWeaponType.Wand, true);
-            _weapon.WeaponTarget = WeaponTarget.Enemy;
-            _weapon.Range += _collider.size.x;
+            _firstWeapon = WeaponManager.Instance.AddWeapon(weaponParent, TargetBaseWeaponType.Wand, true);
+            _firstWeapon.WeaponTarget = WeaponTarget.Enemy;
+            _firstWeapon.Range += _collider.size.x;
+            _weapons.Add(_firstWeapon);
+
             GameManager.Instance.OnGameStarted += OnGameStarted;
             _currentHealth = _maxHealth;
         }
@@ -59,6 +64,49 @@ namespace Player
         public void FlipSprite()
         {
             sprite.flipX = !sprite.flipX;
+        }
+
+        public void Heal(int healAmount)
+        {
+            _currentHealth += healAmount;
+            if (_currentHealth > _maxHealth)
+            {
+                _currentHealth = _maxHealth;
+            }
+        }
+
+        public void AddWeapon(Weapon weapon)
+        {
+            if (weapon.Type == WeaponType.TargetBase)
+            {
+                var targetBaseWeapon = (TargetBaseWeapon) weapon;
+                targetBaseWeapon.WeaponTarget = WeaponTarget.Enemy;
+                targetBaseWeapon.Range += _collider.size.x;
+            }
+
+            _weapons.Add(weapon);
+        }
+
+        public List<Weapon> GetEquippedWeapons()
+        {
+            return _weapons;
+        }
+
+        public void UpgradeWeapon(WeaponProperty weaponProperty)
+        {
+            foreach (var weapon in _weapons)
+            {
+                if (weapon.Type == WeaponType.Area && weaponProperty.WeaponType == WeaponType.Area)
+                {
+                    if (weapon.AreaWeaponType == weaponProperty.AreaWeaponProperty.WeaponType)
+                        weapon.Upgrade();
+                }
+                else if (weapon.Type == WeaponType.TargetBase && weaponProperty.WeaponType == WeaponType.TargetBase)
+                {
+                    if (weapon.TargetBaseWeaponType == weaponProperty.TargetBaseWeaponProperty.WeaponType)
+                        weapon.Upgrade();
+                }
+            }
         }
     }
 }

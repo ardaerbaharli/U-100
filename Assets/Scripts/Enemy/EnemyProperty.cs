@@ -1,4 +1,5 @@
 using Enemy.EnemyTypes;
+using UnityEditor.Animations;
 using UnityEngine;
 using Weapons;
 
@@ -13,5 +14,7 @@ namespace Enemy
         public float Health;
         public float Speed;
         public TargetBaseWeaponType WeaponType;
+        public AnimatorController animator;
+        public float DamageMultiplier = 1;
     }
 }

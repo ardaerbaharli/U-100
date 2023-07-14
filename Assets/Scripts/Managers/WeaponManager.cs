@@ -52,12 +52,13 @@ namespace Managers
             }
 
 
-            w.SetProperties(GetWeaponProperty(type));
+            w.SetWeapon(GetWeaponProperty(type));
             return w;
         }
 
         public AreaWeapon AddWeapon(GameObject to, AreaWeaponType type, WeaponTarget weaponTarget)
         {
+            var level = 1;
             var properties = GetWeaponProperty(type);
             var weapon = Instantiate(properties.AreaWeaponProperty.WeaponPrefab, to.transform.position,
                 Quaternion.identity);
@@ -65,7 +66,7 @@ namespace Managers
             weapon.transform.parent = to.transform;
 
             var a = weapon.GetComponent<AreaWeapon>();
-            a.SetProperties(properties, weaponTarget);
+            a.SetWeapon(properties, weaponTarget);
             return a;
         }
 
@@ -80,6 +81,11 @@ namespace Managers
         {
             return _weaponProperties.Where(x => x.WeaponType == WeaponType.TargetBase).FirstOrDefault(weaponProperty =>
                 weaponProperty.TargetBaseWeaponProperty.WeaponType == type);
+        }
+
+        public List<WeaponProperty> GetWeaponProperties()
+        {
+            return _weaponProperties;
         }
     }
 }

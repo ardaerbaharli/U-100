@@ -83,8 +83,12 @@ namespace Managers
         private Vector2 GetPosition()
         {
             // position must be out of the screen but not too far, use camera size to calculate
-            var x = Random.Range(-_cameraSize * 2, _cameraSize * 2);
-            var y = Random.Range(-_cameraSize * 2, _cameraSize * 2);
+            var xDistance = Random.Range(_cameraSize * 2, 4 * _cameraSize);
+            var toLeft = Random.Range(0, 2) == 0;
+            float x;
+            x = toLeft ? -xDistance : xDistance;
+
+            var y = Random.Range(-_cameraSize / 2, _cameraSize / 2);
             var position = new Vector2(x, y);
             return position;
         }

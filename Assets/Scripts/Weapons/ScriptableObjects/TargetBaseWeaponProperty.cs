@@ -1,14 +1,17 @@
 using System;
+using System.Collections.Generic;
 
 namespace Weapons
 {
     [Serializable]
     public class TargetBaseWeaponProperty
     {
-        public float Damage;
-        public float Speed;
-        public float Range;
-        public float AttackInterval;
         public TargetBaseWeaponType WeaponType;
+        public List<TargetBaseWeaponUpgradeData> UpgradeData;
+        
+        public TargetBaseWeaponUpgradeData GetUpgradeData(int level)
+        {
+            return UpgradeData[level - 1];
+        }
     }
 }

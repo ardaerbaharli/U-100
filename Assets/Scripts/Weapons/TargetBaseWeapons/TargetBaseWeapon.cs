@@ -29,7 +29,7 @@ namespace Weapons
             }
         }
 
-        public float Damage { get; private set; }
+        public float Damage { get; set; }
         public float Speed { get; private set; }
         public float Range { get; set; }
         public float AttackInterval { get; private set; }
@@ -85,13 +85,38 @@ namespace Weapons
 
         public abstract void Attack();
 
-        public void SetProperties(WeaponProperty getWeaponProperty)
+        public void SetWeapon(WeaponProperty property)
         {
-            var targetBaseWeaponProperty = getWeaponProperty.TargetBaseWeaponProperty;
-            Damage = targetBaseWeaponProperty.Damage;
-            Speed = targetBaseWeaponProperty.Speed;
-            Range = targetBaseWeaponProperty.Range;
-            AttackInterval = targetBaseWeaponProperty.AttackInterval;
+            Property = property;
+            
+            Sprite = property.Sprite;
+            Name = property.Name;
+            
+            Type = WeaponType.TargetBase;
+            TargetBaseWeaponType = property.TargetBaseWeaponProperty.WeaponType;
+
+            Level = 1;
+            MaxLevel = Property.MaxLevel;
+
+            var data = Property.TargetBaseWeaponProperty.GetUpgradeData(Level);
+            SetData(data);
+        }
+
+        private void SetData(TargetBaseWeaponUpgradeData data)
+        {
+            Damage = data.Damage;
+            Speed = data.Speed;
+            Range = data.Range;
+            AttackInterval = data.AttackInterval;
+            UpgradeDescription = data.UpgradeDescription;
+
+        }
+
+        public override void Upgrade()
+        {
+            Level++;
+            var upgradeData = Property.TargetBaseWeaponProperty.GetUpgradeData(Level);
+            SetData(upgradeData);
         }
     }
 }

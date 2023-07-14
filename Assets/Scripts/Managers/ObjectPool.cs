@@ -40,7 +40,8 @@ namespace Managers
         Enemy,
         Boss,
         WandAmmo,
-        Arrow
+        Arrow,
+        Collectable
     }
 
     public class ObjectPool : MonoBehaviour

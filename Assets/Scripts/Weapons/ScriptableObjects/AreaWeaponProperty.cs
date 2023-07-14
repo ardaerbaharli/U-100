@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Weapons
@@ -7,7 +8,12 @@ namespace Weapons
     public class AreaWeaponProperty
     {
         public AreaWeaponType WeaponType;
-        public float Damage;
         public GameObject WeaponPrefab;
+        public List<AreaWeaponUpgradeData> UpgradeData;
+        
+        public AreaWeaponUpgradeData GetUpgradeData(int level)
+        {
+            return UpgradeData[level - 1];
+        }
     }
 }
