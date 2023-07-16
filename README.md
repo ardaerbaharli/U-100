@@ -73,6 +73,7 @@
 - Oyun adını düşündük ve hep beraber içerisinde "dungeon" kelimesinin geçmesine karar kıldık.
 - Puanlamadan dolayı 3D bir oyun yapıp yapamayacağımızı tartıştık.
 - Bütünleme sınavlarından dolayı bazı toplantılarımızı eksik kişiyle yaptık.
+  ![image](https://github.com/ardaerbaharli/U-100/blob/main/3.png)
   
   # Sprint 3
 - Görev dağılımları yapıldı.
