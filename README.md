@@ -48,6 +48,7 @@
 - Takım üyelerinin repoya eklenmesi
 - Oyun fikirlerinin tartışılması
 - GDD örnekleri incelenmesi
+  ![image](https://github.com/ardaerbaharli/U-100/blob/main/2.png)
 
 <img width="952" alt="image" src="https://github.com/sudeyaprak/U-100/assets/119863892/2d177492-489e-4e10-89cb-fd1c56bcbba3">
 
@@ -67,3 +68,24 @@
 - Takım elemanlarının bir çoğunun sınav dönemine denk gelmesinden dolayı takım içinde kopukluklar yaşandı.
 - Oyun hikayesini ve konusunu belirlemede çok fazla vakit kaybı yaşandı.
 - İlk sprintte tamamlanamayan görevlerin diğer sprintlerde tamamlanmasına karar verildi.
+
+  # Sprint 2
+- Free assetler üzerinde takımca karar verdik.
+- Oyun adını düşündük ve hep beraber içerisinde "dungeon" kelimesinin geçmesine karar kıldık.
+- Puanlamadan dolayı 3D bir oyun yapıp yapamayacağımızı tartıştık.
+- Bütünleme sınavlarından dolayı bazı toplantılarımızı eksik kişiyle yaptık.
+  ![image](https://github.com/ardaerbaharli/U-100/blob/main/3.png)
+  ![image](https://github.com/ardaerbaharli/U-100/blob/main/4.png)
+
+  ### Daily Scrum
+  Haberleşmek ve toplantı saatlerini kararlaştırmak için WhatsApp üzerinden konuşup toplantıları Discord üzerinden gerçekleştirdik.
+  ### Sprint Review
+  Takımca free assetler üzerinde dungeon temasına en uygun olacak asseti seçtik. Oyun içerisinde "boss" karakterinin hangi olması gerektiğine, ne zaman oyuncunun karşısına çıkacağını tartıştık.
+  
+  # Sprint 3
+- Görev dağılımları yapıldı.
+- Oyun haritası yapıldı, karakterler eklendi.
+- Oyunumuz sonuç olarak en son haline ulaştı.
+  
+ ![image](https://github.com/ardaerbaharli/U-100/blob/main/1.png)
+
