@@ -70,7 +70,7 @@
 
   # Sprint 2
 - Free assetler üzerinde takımca karar verdik.
-- Oyun adını düşündük ve hep beraber içerisinde "dungeon" kelimesinin geçmesine karar kıldık
+- Oyun adını düşündük ve hep beraber içerisinde "dungeon" kelimesinin geçmesine karar kıldık.
 - Puanlamadan dolayı 3D bir oyun yapıp yapamayacağımızı tartıştık.
 - Bütünleme sınavlarından dolayı bazı toplantılarımızı eksik kişiyle yaptık.
 
