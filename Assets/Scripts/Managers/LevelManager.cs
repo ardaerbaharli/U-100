@@ -51,7 +51,7 @@ namespace Managers
         private void LevelUp()
         {
             Level++;
-            _remainingPointsToLevelUp = _previousPointsToLevelUp * 1.5f;
+            _remainingPointsToLevelUp = _previousPointsToLevelUp * 1.3f;
             _previousPointsToLevelUp = _remainingPointsToLevelUp;
             UpgradeManager.Instance.ShowUpgradeMenu();
         }

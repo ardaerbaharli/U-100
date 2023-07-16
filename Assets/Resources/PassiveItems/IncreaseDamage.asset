@@ -15,5 +15,5 @@ MonoBehaviour:
   Type: 5
   Sprite: {fileID: 21300000, guid: 1f7015e41e41849c9b5ac4027ba54396, type: 3}
   Title: Increase Damage
-  Description: Increase damage of all your weapons by %50
+  Description: Increase damage of all your weapons by %15
   MaxLevel: 10

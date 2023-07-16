@@ -26,9 +26,12 @@ namespace Weapons
 
         public override void UpdateDamage(float multiplier)
         {
-            for (var i = 0; i < fireballs.Count; i++)
+            var count = Level;
+            if (Level > fireballs.Count)
+                count = fireballs.Count;
+            for (var i = 0; i < count; i++)
             {
-                 fireballs[i].damage = Damage * DamageMultiplier;
+                fireballs[i].damage = Damage * DamageMultiplier;
             }
         }
 
@@ -45,7 +48,8 @@ namespace Weapons
             if (Level > fireballs.Count)
                 return;
 
-            for (var i = 0; i < fireballs.Count; i++)
+
+            for (var i = 0; i < Level; i++)
             {
                 var fireball = fireballs[i];
                 fireball.SetProperties(WeaponTarget, Damage * DamageMultiplier);

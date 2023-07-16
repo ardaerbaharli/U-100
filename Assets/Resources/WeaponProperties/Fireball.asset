@@ -25,28 +25,28 @@ MonoBehaviour:
     UpgradeData:
     - UpgradeDescription: Base
       Speed: 100
-      Damage: 1
+      Damage: 0.5
     - UpgradeDescription: One more fireball!
       Speed: 100
-      Damage: 1
+      Damage: 0.5
     - UpgradeDescription: One more fireball!
       Speed: 100
-      Damage: 1
+      Damage: 0.5
     - UpgradeDescription: One more fireball!
       Speed: 100
-      Damage: 1
+      Damage: 0.5
     - UpgradeDescription: Increase damage
       Speed: 100
-      Damage: 2
+      Damage: 1
     - UpgradeDescription: Increase speed
       Speed: 125
-      Damage: 3
+      Damage: 1
     - UpgradeDescription: Increase damage
       Speed: 100
-      Damage: 3
+      Damage: 1.5
     - UpgradeDescription: Increase speed
       Speed: 150
-      Damage: 3
+      Damage: 1.5
     - UpgradeDescription: Increase damage
       Speed: 150
-      Damage: 4
+      Damage: 1.75

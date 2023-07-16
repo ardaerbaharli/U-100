@@ -35,17 +35,17 @@ MonoBehaviour:
       Range: 0.15
       AttackInterval: 0.7
     - UpgradeDescription: Increase damage
-      Damage: 3
+      Damage: 2
       Speed: 1
       Range: 0.15
       AttackInterval: 0.7
     - UpgradeDescription: Decrease attack interval
-      Damage: 3
+      Damage: 2
       Speed: 1
       Range: 0.15
       AttackInterval: 0.5
     - UpgradeDescription: Increase damage
-      Damage: 5
+      Damage: 3
       Speed: 1
       Range: 0.15
       AttackInterval: 0.5
