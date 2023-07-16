@@ -14,7 +14,6 @@ namespace Weapons
             Level++;
             var data = _areaProperty.GetUpgradeData(Level);
             SetData(data);
-            
             Upgraded();
         }
 
@@ -47,6 +46,14 @@ namespace Weapons
             
             StartAttack();
         }
+        
+        public  override void SetDamageMultiplier(float multiplier)
+        { 
+            base.SetDamageMultiplier(multiplier);
+            UpdateDamage(multiplier);
+        }
+
+        public abstract void UpdateDamage(float multiplier);
 
 
         public abstract void StartAttack();

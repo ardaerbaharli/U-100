@@ -5,7 +5,7 @@ namespace Weapons
 {
     public class MeleeWeapon : TargetBaseWeapon
     {
-        public override void Attack()
+        public override void Attack( )
         {
             StartCoroutine(StartAttacking());
         }
@@ -16,8 +16,9 @@ namespace Weapons
             {
                 yield return new WaitForSeconds(AttackInterval);
                 if (TargetInRange)
-                    target.TakeDamage(Damage);
+                    target.TakeDamage(Damage*DamageMultiplier);
             }
         }
+
     }
 }

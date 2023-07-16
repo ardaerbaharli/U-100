@@ -52,7 +52,7 @@ namespace Managers
             // select 3 random upgrades
             if (upgrades.Count > 3)
                 upgrades = upgrades.OrderBy(x => Guid.NewGuid()).Take(3).ToList();
-            
+
             upgradePanel.Show(upgrades);
         }
 
@@ -64,7 +64,7 @@ namespace Managers
                 var upgrade = new Upgrade();
                 if (PlayerManager.Instance.HasPassiveItem(property.Type))
                 {
-                    PlayerManager.Instance.UpgradePassiveItem(property.Type);
+                    upgrade.OnSelected += () => PlayerManager.Instance.UpgradePassiveItem(property.Type);
                 }
                 else
                 {
@@ -111,7 +111,7 @@ namespace Managers
                         upgrade.OnSelected += () => { PlayerManager.Instance.UpgradeWeapon(weapon); };
                         upgrade.Sprite = weapon.Sprite;
                         upgrade.Title = weapon.Name;
-                        upgrade.Level = w.Level+1;
+                        upgrade.Level = w.Level + 1;
                         upgrade.Description = weapon.WeaponType switch
                         {
                             WeaponType.TargetBase => weapon.TargetBaseWeaponProperty.GetUpgradeData(w.Level + 1)

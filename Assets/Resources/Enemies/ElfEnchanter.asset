@@ -16,7 +16,7 @@ MonoBehaviour:
   OnHitSprite: {fileID: 21300000, guid: a93f0d96a85644c8f970beb3011d5293, type: 3}
   Type: 3
   IsBoss: 0
-  Health: 2
+  Health: 4
   Speed: 1.35
   WeaponType: 0
   animator: {fileID: 9100000, guid: 8bd27702f96034c238f2d839c19af5de, type: 2}

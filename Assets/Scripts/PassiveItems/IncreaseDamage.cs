@@ -6,7 +6,7 @@ namespace Upgrades
     {
         public override void Apply()
         {
-            PlayerManager.Instance.IncreaseRange(10);
+            PlayerManager.Instance.IncreaseDamage(50);
         }
     }
 }

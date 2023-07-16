@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c22a2009c4a6998c72f2291695f57, type: 3}
   m_Name: MerfolkWaveMaster
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 241231373, guid: 46f0f3441235845628cf6215ffd38b04, type: 3}
-  OnHitSprite: {fileID: 0}
+  Sprite: {fileID: 227535330, guid: 3a9d3e9fb97f94034b5eaa3bd5401afc, type: 3}
+  OnHitSprite: {fileID: 21300000, guid: 7d379aac34c6b4753a3c085f011285a6, type: 3}
   Type: 11
   IsBoss: 1
-  Health: 50
-  Speed: 0.8
+  Health: 75
+  Speed: 1.35
   WeaponType: 1
   animator: {fileID: 9100000, guid: 981fabe84e5d34fffb7dda5ee7119fd1, type: 2}
   DamageMultiplier: 25

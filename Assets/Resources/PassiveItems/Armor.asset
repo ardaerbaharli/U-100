@@ -15,5 +15,5 @@ MonoBehaviour:
   Type: 0
   Sprite: {fileID: 1590787471, guid: 94840b4aff1db4d34a6e8e6af8ef4b69, type: 3}
   Title: Armor
-  Description: Reduce incoming damage by 1
-  MaxLevel: 20
+  Description: Reduce incoming damage %4
+  MaxLevel: 5

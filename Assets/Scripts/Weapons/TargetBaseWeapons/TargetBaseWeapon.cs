@@ -29,10 +29,10 @@ namespace Weapons
             }
         }
 
-        public float Damage { get; set; }
+        public float Damage;
         public float Speed { get; private set; }
         public float Range { get; set; }
-        public float AttackInterval { get; private set; }
+        public float AttackInterval { get; set; }
 
 
         public void Start()
@@ -129,6 +129,7 @@ namespace Weapons
             Level++;
             var upgradeData = Property.TargetBaseWeaponProperty.GetUpgradeData(Level);
             SetData(upgradeData);
+            
         }
     }
 }

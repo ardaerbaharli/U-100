@@ -6,7 +6,7 @@ namespace Upgrades
     {
         public override void Apply()
         {
-            PlayerManager.Instance.playerMovementManager.IncreaseSpeed(10);
+            PlayerManager.Instance.playerMovementManager.IncreaseSpeed(20);
         }
     }
 }

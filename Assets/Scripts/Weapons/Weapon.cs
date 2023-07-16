@@ -14,6 +14,13 @@ namespace Weapons
         public int MaxLevel;
 
         public WeaponProperty Property;
+
+        public float DamageMultiplier = 1f;
+
+        public virtual void SetDamageMultiplier(float multiplier)
+        { 
+            DamageMultiplier = multiplier;
+        }
         public abstract void Upgrade();
 
 

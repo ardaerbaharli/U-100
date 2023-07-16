@@ -89,13 +89,17 @@ namespace Player
             CurrentHealth = MaxHealth;
         }
 
+        [SerializeField] private float attackSpeedMultiplier;
+
         public void AddWeapon(Weapon weapon)
         {
             if (weapon.Type == WeaponType.TargetBase)
             {
                 var targetBaseWeapon = (TargetBaseWeapon) weapon;
                 targetBaseWeapon.WeaponTarget = WeaponTarget.Enemy;
+                targetBaseWeapon.AttackInterval /= attackSpeedMultiplier;
                 targetBaseWeapon.Range += _collider.size.x;
+                weapon.SetDamageMultiplier ( _damageMultiplier / 100);
             }
 
             _weapons.Add(weapon);
@@ -111,12 +115,12 @@ namespace Player
             _isDead = false;
         }
 
-        public int armorAmount;
+        public int armorAmountPercentage;
 
         public override void TakeDamage(float damage)
         {
             if (_isDead) return;
-            damage -= armorAmount;
+            damage -= damage * (armorAmountPercentage / 100f);
             CurrentHealth -= damage;
             if (CurrentHealth <= 0)
             {
@@ -159,6 +163,7 @@ namespace Player
                 {
                     if (weapon.TargetBaseWeaponType != weaponProperty.TargetBaseWeaponProperty.WeaponType) continue;
                     weapon.Upgrade();
+                    ((TargetBaseWeapon) weapon).AttackInterval /= attackSpeedMultiplier;
                     break;
                 }
             }
@@ -222,20 +227,24 @@ namespace Player
             }
         }
 
+        private float _damageMultiplier = 100;
+
         public void IncreaseDamage(float percentage)
         {
+            _damageMultiplier += percentage;
             foreach (var weapon in _weapons)
             {
-                if (weapon.Type == WeaponType.Area)
-                {
-                    var w = (AreaWeapon) weapon;
-                    w.Damage += w.Damage * (percentage / 100f);
-                }
-                else if (weapon.Type == WeaponType.TargetBase)
-                {
-                    var w = (TargetBaseWeapon) weapon;
-                    w.Damage += w.Damage * (percentage / 100f);
-                }
+                weapon.SetDamageMultiplier ( _damageMultiplier / 100);
+                // if (weapon.Type == WeaponType.Area)
+                // {
+                //     var w = (AreaWeapon) weapon;
+                //     w.Damage += w.Damage * (_damageMultiplier / 100f);
+                // }
+                // else if (weapon.Type == WeaponType.TargetBase)
+                // {
+                //     var w = (TargetBaseWeapon) weapon;
+                //     w.Damage += w.Damage * (_damageMultiplier / 100f);
+                // }
             }
         }
     }

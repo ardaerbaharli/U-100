@@ -25,7 +25,7 @@ namespace Weapons
             var projectile = projectilePooledObject.gameObject.GetComponent<Ammo>();
             projectile.PooledObject = projectilePooledObject;
 
-            projectile.SetAmmoProperty(Damage, Speed, Range, WeaponTarget);
+            projectile.SetAmmoProperty(Damage*DamageMultiplier, Speed, Range, WeaponTarget);
             projectile.transform.position = transform.position;
 
             Vector2 direction;
@@ -38,5 +38,7 @@ namespace Weapons
             projectile.gameObject.SetActive(true);
             projectile.Shoot(direction);
         }
+
+      
     }
 }

@@ -7,7 +7,7 @@ namespace Weapons
     public class Fireballs : AreaWeapon
     {
         [SerializeField] private List<Ball> fireballs;
-        [SerializeField] private float speed;
+        private float speed;
 
 
         private IEnumerator StartRotatingAround()
@@ -24,8 +24,17 @@ namespace Weapons
             SetLevelFireballs();
         }
 
+        public override void UpdateDamage(float multiplier)
+        {
+            for (var i = 0; i < fireballs.Count; i++)
+            {
+                 fireballs[i].damage = Damage * DamageMultiplier;
+            }
+        }
+
         public override void StartAttack()
         {
+            speed = Property.AreaWeaponProperty.GetUpgradeData(Level).Speed;
             SetLevelFireballs();
 
             StartCoroutine(StartRotatingAround());
@@ -35,11 +44,11 @@ namespace Weapons
         {
             if (Level > fireballs.Count)
                 return;
-            
-            for (var i = 0; i < Level; i++)
+
+            for (var i = 0; i < fireballs.Count; i++)
             {
                 var fireball = fireballs[i];
-                fireball.SetProperties(WeaponTarget, Damage);
+                fireball.SetProperties(WeaponTarget, Damage * DamageMultiplier);
                 fireball.gameObject.SetActive(true);
             }
         }

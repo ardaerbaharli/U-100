@@ -6,7 +6,7 @@ namespace Upgrades
     {
         public override void Apply()
         {
-            PlayerManager.Instance.armorAmount += 1;
+            PlayerManager.Instance.armorAmountPercentage += 4;
         }
     }
 }

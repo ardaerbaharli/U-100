@@ -543,7 +543,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 771156917}
   m_FillRect: {fileID: 1295102197}
   m_HandleRect: {fileID: 771156916}
@@ -791,7 +791,7 @@ MonoBehaviour:
   objectToPool:
   - type: 0
     gameObject: {fileID: 401778579044661314, guid: 903031c9106de4e01baa7c0889d93078, type: 3}
-    amount: 300
+    amount: 400
     parent: {fileID: 1215499964}
   - type: 2
     gameObject: {fileID: 5634089730518767722, guid: 18300539b93914f7792e919b8874acdb, type: 3}
@@ -803,7 +803,7 @@ MonoBehaviour:
     parent: {fileID: 272838040}
   - type: 4
     gameObject: {fileID: 8541979522467392765, guid: 9ea2883e9608046d8b1f43584419a509, type: 3}
-    amount: 300
+    amount: 500
     parent: {fileID: 830168157}
   - type: 1
     gameObject: {fileID: 4650441114436849585}
@@ -1916,7 +1916,8 @@ MonoBehaviour:
   playerMovementManager: {fileID: 0}
   _maxHealth: 100
   regenerationAmount: 0
-  armorAmount: 0
+  attackSpeedMultiplier: 2
+  armorAmountPercentage: 0
 --- !u!4 &803953814
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2482,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1556099754}
   m_FillRect: {fileID: 646359573}
   m_HandleRect: {fileID: 1556099752}

@@ -15,5 +15,5 @@ MonoBehaviour:
   Type: 2
   Sprite: {fileID: 21300000, guid: e0a798600ec054dc7a64ca3d75a4884f, type: 3}
   Title: Move Speed
-  Description: Increase move speed %10
+  Description: Increase move speed %20
   MaxLevel: 10

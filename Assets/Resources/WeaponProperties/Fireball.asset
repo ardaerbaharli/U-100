@@ -15,7 +15,7 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 4b3d856084cc341f99ef0b93b2145664, type: 3}
   Name: Fireball
   WeaponType: 1
-  MaxLevel: 6
+  MaxLevel: 9
   TargetBaseWeaponProperty:
     WeaponType: 0
     UpgradeData: []
@@ -24,14 +24,29 @@ MonoBehaviour:
     WeaponPrefab: {fileID: 3968924927044264934, guid: c83c42663111049f99f40e514054587f, type: 3}
     UpgradeData:
     - UpgradeDescription: Base
+      Speed: 100
       Damage: 1
     - UpgradeDescription: One more fireball!
+      Speed: 100
       Damage: 1
     - UpgradeDescription: One more fireball!
+      Speed: 100
       Damage: 1
     - UpgradeDescription: One more fireball!
+      Speed: 100
       Damage: 1
     - UpgradeDescription: Increase damage
+      Speed: 100
       Damage: 2
-    - UpgradeDescription: Increase damage
+    - UpgradeDescription: Increase speed
+      Speed: 125
       Damage: 3
+    - UpgradeDescription: Increase damage
+      Speed: 100
+      Damage: 3
+    - UpgradeDescription: Increase speed
+      Speed: 150
+      Damage: 3
+    - UpgradeDescription: Increase damage
+      Speed: 150
+      Damage: 4
