@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MerfolkScoutIdle
+  m_Name: MerfolkScout
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5d8a20c71274a48afab920fe942b3135, type: 2}
+  m_Motion: {fileID: 7400000, guid: b20c9dd8d887847d2bf8d2eea6c0184f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

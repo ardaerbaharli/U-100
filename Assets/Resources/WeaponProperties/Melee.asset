@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b4c6d8dc3446f38562a48ea115b310, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: a87827ac535c04adb9920f5b5243fa8f, type: 3}
+  Sprite: {fileID: 475605679, guid: 94840b4aff1db4d34a6e8e6af8ef4b69, type: 3}
   Name: Melee
   WeaponType: 0
   MaxLevel: 6

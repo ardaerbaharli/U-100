@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MerfolkScoutIdle
+  m_Name: MerfolkScoutIDle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -1479140047, guid: a8a69045e9f9147a98f02a1e470624e3, type: 3}
-    - time: 0.41666666
+    - time: 0.16666667
       value: {fileID: -2033835941, guid: a8a69045e9f9147a98f02a1e470624e3, type: 3}
-    - time: 0.75
+    - time: 0.41666666
       value: {fileID: -1465516710, guid: a8a69045e9f9147a98f02a1e470624e3, type: 3}
-    - time: 1.1666666
+    - time: 0.5833333
       value: {fileID: -1760736418, guid: a8a69045e9f9147a98f02a1e470624e3, type: 3}
     attribute: m_Sprite
     path: Image
@@ -55,7 +55,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.25
+    m_StopTime: 0.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

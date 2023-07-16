@@ -30,6 +30,7 @@ namespace Player
                 // if the player is going to collide with a wall, set the movement to 0
                 return;
             }
+
             transform.position += movement * (speed * Time.deltaTime);
             if (horizontal > 0 && _direction == Direction.Left)
             {
@@ -46,6 +47,11 @@ namespace Player
         public void SetDirection(Direction direction)
         {
             _direction = direction;
+        }
+
+        public void IncreaseSpeed(float percentage)
+        {
+            speed += speed * (percentage / 100f);
         }
     }
 }

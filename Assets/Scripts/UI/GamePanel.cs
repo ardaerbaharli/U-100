@@ -14,6 +14,7 @@ namespace UI
 
         [SerializeField] private Sprite pauseSprite, resumeSprite;
 
+        private bool _isPaused;
 
         private void Start()
         {
@@ -53,7 +54,12 @@ namespace UI
 
         public void PauseButton()
         {
-            GameManager.Instance.PauseGame();
+            if (_isPaused)
+                GameManager.Instance.ResumeGame();
+            else
+                GameManager.Instance.PauseGame();
+            
+            _isPaused = !_isPaused;
         }
     }
 }

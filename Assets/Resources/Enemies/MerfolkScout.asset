@@ -18,5 +18,5 @@ MonoBehaviour:
   Health: 2
   Speed: 1.35
   WeaponType: 1
-  animator: {fileID: 9100000, guid: 981fabe84e5d34fffb7dda5ee7119fd1, type: 2}
-  DamageMultiplier: 1.5
+  animator: {fileID: 9100000, guid: 883089f15fa3c4c68b570cf7aa3ab98d, type: 2}
+  DamageMultiplier: 2.5

@@ -59,7 +59,6 @@ namespace Managers
 
         public AreaWeapon AddWeapon(GameObject to, AreaWeaponType type, WeaponTarget weaponTarget)
         {
-            var level = 1;
             var properties = GetWeaponProperty(type);
             var weapon = Instantiate(properties.AreaWeaponProperty.WeaponPrefab, to.transform,false);
             weapon.transform.localPosition = Vector3.zero;
@@ -84,7 +83,7 @@ namespace Managers
 
         public List<WeaponProperty> GetWeaponProperties()
         {
-            return _weaponProperties;
+            return _weaponProperties.ToList();
         }
     }
 }

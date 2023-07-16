@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7a0be306c7bf44f9843de8ed0ed8532
+guid: 94840b4aff1db4d34a6e8e6af8ef4b69
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,13 +141,14 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_0
+      name: steel-armor-weapons-pixel-art-set-medieval-combat-ammunition-collection-8bit-sprite_418367-248
+        (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 141
+        y: 469
+        width: 376
+        height: 376
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +156,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d7969871d1355a48bb29034ae4b7e36
-      internalID: 916013694
+      spriteID: c8dc0b9f7d74f4f2692ba95547730739
+      internalID: 1205209201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_1
+      name: steel-armor-weapons-pixel-art-set-medieval-combat-ammunition-collection-8bit-sprite_418367-248
+        (1)_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 78
+        y: 63
+        width: 376
+        height: 377
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +178,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce1bfd3b847d0a54da34b86653ca3f75
-      internalID: 1247020864
+      spriteID: 5d7f5441422fc4c7dbb78d363f129ba2
+      internalID: 475605679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_2
+      name: steel-armor-weapons-pixel-art-set-medieval-combat-ammunition-collection-8bit-sprite_418367-248
+        (1)_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 511
+        y: 63
+        width: 376
+        height: 377
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,113 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe132136f20f50847a7bb55abe16aa68
-      internalID: 231514388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38105709a8359b64c8f3165200ce959f
-      internalID: -365696639
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4251067f7f94e4148937de0fce5f594a
-      internalID: -1147716545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b118d4e5f9de28a479fdd3f4f47529a2
-      internalID: -727428828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d22053dc5489f046a166ef9635d5e92
-      internalID: -560598096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MerfolkWavemasterIdleSide2_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26f77692ce0642241a70181eed99ac20
-      internalID: 1306613485
+      spriteID: a49c9c65159b34149884b3d39ed0bf7b
+      internalID: 1590787471
       vertices: []
       indices: 
       edges: []
@@ -319,14 +217,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MerfolkWavemasterIdleSide2_1: 1247020864
-      MerfolkWavemasterIdleSide2_5: -727428828
-      MerfolkWavemasterIdleSide2_0: 916013694
-      MerfolkWavemasterIdleSide2_7: 1306613485
-      MerfolkWavemasterIdleSide2_2: 231514388
-      MerfolkWavemasterIdleSide2_6: -560598096
-      MerfolkWavemasterIdleSide2_3: -365696639
-      MerfolkWavemasterIdleSide2_4: -1147716545
+      steel-armor-weapons-pixel-art-set-medieval-combat-ammunition-collection-8bit-sprite_418367-248 (1)_0: 1205209201
+      steel-armor-weapons-pixel-art-set-medieval-combat-ammunition-collection-8bit-sprite_418367-248 (1)_1: 475605679
+      steel-armor-weapons-pixel-art-set-medieval-combat-ammunition-collection-8bit-sprite_418367-248 (1)_2: 1590787471
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

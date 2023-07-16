@@ -29,6 +29,7 @@ namespace Enemy
         public Action OnEnemyDied;
         public Action<EnemyProperty> OnPropertySet;
         private Animator _animator;
+        private bool _isBoss;
 
         private void Awake()
         {
@@ -68,6 +69,7 @@ namespace Enemy
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
 
+            _isBoss = enemyProperty.IsBoss;
             _animator.runtimeAnimatorController = enemyProperty.animator;
 
             var w = WeaponManager.Instance.AddWeapon(weaponParent, enemyProperty.WeaponType);
@@ -80,7 +82,7 @@ namespace Enemy
         public override void TakeDamage(float damage)
         {
             _currentHealth -= damage;
-            
+
             if (_currentHealth <= 0)
             {
                 Die();
@@ -91,6 +93,8 @@ namespace Enemy
         {
             LevelManager.Instance.PointsReceived(_maxHealth);
             CollectableManager.Instance.SpawnCollectable(CollectableType.Coin, transform.position);
+            if (_isBoss)
+                CollectableManager.Instance.SpawnCollectable(CollectableType.Chest, transform.position);
             isDead = true;
             ReturnToPool();
         }

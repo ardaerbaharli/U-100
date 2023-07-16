@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Upgrades;
 using Weapons;
 
 namespace UI
@@ -11,7 +12,13 @@ namespace UI
 
         private void Awake()
         {
-            upgradeUIs.ForEach(x => x.OnClicked += Hide);
+            upgradeUIs.ForEach(x => x.OnClicked += ClickedOnUpgrade);
+        }
+
+        private void ClickedOnUpgrade(Upgrade upgrade)
+        {
+            upgrade.OnSelected?.Invoke();
+            Hide();
         }
 
         private void Hide()
@@ -20,26 +27,18 @@ namespace UI
             gameObject.SetActive(false);
         }
 
-        public void Show(List<Weapon> upgrades, List<WeaponProperty> weaponProperties)
-        {
-            int i;
-            for (i = 0; i < upgrades.Count; i++)
-            {
-                upgradeUIs[i].SetData(upgrades[i].Property,true, upgrades[i].Level+1);
-            }
+     
 
-            foreach (var property in weaponProperties)
+        public void Show(List<Upgrade> upgrades)
+        {
+            var i = 0;
+            foreach (var upgrade in upgrades)
             {
-                upgradeUIs[i].SetData(property, false, 1);
+                var ui = upgradeUIs[i];
+                ui.SetData(upgrade);
                 i++;
             }
-
-            // hide remaining
-            for (var j = i; j < upgradeUIs.Count; j++)
-            {
-                upgradeUIs[j].Hide();
-            }
-
+            
             gameObject.SetActive(true);
         }
     }

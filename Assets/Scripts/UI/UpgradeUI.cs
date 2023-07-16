@@ -4,6 +4,7 @@ using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Upgrades;
 using Weapons;
 
 namespace UI
@@ -18,7 +19,8 @@ namespace UI
         private bool _isUpgrade;
         private Weapon _upgrade;
         private WeaponProperty _weaponProperty;
-        public Action OnClicked;
+        public Action<Upgrade> OnClicked;
+        private Upgrade upgrade;
 
         private void SetUpgradeUI(Sprite sprite, string title, string description, int level)
         {
@@ -33,50 +35,18 @@ namespace UI
             gameObject.SetActive(false);
         }
 
-      
-
-        public void SetData(WeaponProperty property, bool isUpgrade, int level)
+        
+        public void SetData(Upgrade u)
         {
-            _isUpgrade = isUpgrade;
-            _weaponProperty = property;
-            string desc;
-            if (isUpgrade)
-            {
-                if (property.WeaponType == WeaponType.Area)
-                    desc = property.AreaWeaponProperty.GetUpgradeData(level).UpgradeDescription;
-                else
-                    desc = property.TargetBaseWeaponProperty.GetUpgradeData(level).UpgradeDescription;
-            }
-            else desc = "New Weapon";
-
-            SetUpgradeUI(property.Sprite, property.Name, desc, level);
+            SetUpgradeUI(u.Sprite, u.Title, u.Description, u.Level);
+            upgrade = u;
             gameObject.SetActive(true);
         }
 
+
         public void Clicked()
         {
-            OnClicked?.Invoke();
-            if (_isUpgrade)
-                PlayerManager.Instance.UpgradeWeapon(_weaponProperty);
-            else
-            {
-                Weapon w;
-                if (_weaponProperty.WeaponType == WeaponType.Area)
-                {
-                    w = WeaponManager.Instance.AddWeapon(PlayerManager.Instance.weaponParent,
-                        _weaponProperty.AreaWeaponProperty.WeaponType,
-                        WeaponTarget.Enemy);
-                }
-                else
-                {
-                    w = WeaponManager.Instance.AddWeapon(PlayerManager.Instance.weaponParent,
-                        _weaponProperty.TargetBaseWeaponProperty.WeaponType, true);
-                }
-
-                Player.PlayerManager.Instance.AddWeapon(w);
-            }
-
-            _isUpgrade = false;
+            OnClicked?.Invoke(upgrade);
             gameObject.SetActive(false);
         }
     }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dddeae68f94b5ba74d344ab00ef819, type: 3}
+  m_Name: IncreaseDamage
+  m_EditorClassIdentifier: 
+  Type: 5
+  Sprite: {fileID: 21300000, guid: 1f7015e41e41849c9b5ac4027ba54396, type: 3}
+  Title: Increase Damage
+  Description: Increase damage of all your weapons by %10
+  MaxLevel: 10

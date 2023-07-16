@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf224d4150514a9b9ac6ea81cb803af7, type: 3}
-  m_Name: Wave-l1w2
+  m_Name: D3
   m_EditorClassIdentifier: 
   SpawnInterval: 0.1
   Enemies:

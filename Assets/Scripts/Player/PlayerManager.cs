@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Managers;
 using UnityEngine;
 using UnityEngine.UI;
+using Upgrades;
 using Weapons;
 
 namespace Player
@@ -16,7 +19,20 @@ namespace Player
 
         public PlayerMovementManager playerMovementManager;
         [SerializeField] private float _maxHealth;
+
+        public float MaxHealth
+        {
+            get => _maxHealth;
+            set
+            {
+                _maxHealth = value;
+                UpdateHealthBar();
+            }
+        }
+
         private BoxCollider2D _collider;
+
+        private List<PassiveItem> _passiveItems;
 
 
         private float _currentHealth;
@@ -38,6 +54,7 @@ namespace Player
         private void Awake()
         {
             Instance = this;
+            _passiveItems = new List<PassiveItem>();
 
             _collider = GetComponent<BoxCollider2D>();
             _weapons = new List<Weapon>();
@@ -45,22 +62,48 @@ namespace Player
             playerMovementManager = GetComponent<PlayerMovementManager>();
             playerMovementManager.SetDirection(characterStartDirection);
             playerMovementManager.OnFlip += FlipSprite;
+
+            StartCoroutine(RegenerationCoroutine());
+        }
+
+        public float regenerationAmount;
+
+        private IEnumerator RegenerationCoroutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+                if (CurrentHealth < MaxHealth)
+                {
+                    CurrentHealth += regenerationAmount;
+                }
+            }
         }
 
         private void Start()
         {
             _firstWeapon = WeaponManager.Instance.AddWeapon(weaponParent, TargetBaseWeaponType.Wand, true);
-            _firstWeapon.WeaponTarget = WeaponTarget.Enemy;
-            _firstWeapon.Range += _collider.size.x;
-            _weapons.Add(_firstWeapon);
+            AddWeapon(_firstWeapon);
 
             GameManager.Instance.OnGameStarted += OnGameStarted;
-            CurrentHealth = _maxHealth;
+            CurrentHealth = MaxHealth;
+        }
+
+        public void AddWeapon(Weapon weapon)
+        {
+            if (weapon.Type == WeaponType.TargetBase)
+            {
+                var targetBaseWeapon = (TargetBaseWeapon) weapon;
+                targetBaseWeapon.WeaponTarget = WeaponTarget.Enemy;
+                targetBaseWeapon.Range += _collider.size.x;
+            }
+
+            _weapons.Add(weapon);
         }
 
         private void UpdateHealthBar()
         {
-            healthBar.value = CurrentHealth / _maxHealth;
+            healthBar.value = CurrentHealth / MaxHealth;
         }
 
         private void OnGameStarted()
@@ -68,9 +111,12 @@ namespace Player
             _isDead = false;
         }
 
+        public int armorAmount;
+
         public override void TakeDamage(float damage)
         {
             if (_isDead) return;
+            damage -= armorAmount;
             CurrentHealth -= damage;
             if (CurrentHealth <= 0)
             {
@@ -87,22 +133,10 @@ namespace Player
         public void Heal(int healAmount)
         {
             CurrentHealth += healAmount;
-            if (CurrentHealth > _maxHealth)
+            if (CurrentHealth > MaxHealth)
             {
-                CurrentHealth = _maxHealth;
+                CurrentHealth = MaxHealth;
             }
-        }
-
-        public void AddWeapon(Weapon weapon)
-        {
-            if (weapon.Type == WeaponType.TargetBase)
-            {
-                var targetBaseWeapon = (TargetBaseWeapon) weapon;
-                targetBaseWeapon.WeaponTarget = WeaponTarget.Enemy;
-                targetBaseWeapon.Range += _collider.size.x;
-            }
-
-            _weapons.Add(weapon);
         }
 
         public List<Weapon> GetEquippedWeapons()
@@ -116,13 +150,91 @@ namespace Player
             {
                 if (weapon.Type == WeaponType.Area && weaponProperty.WeaponType == WeaponType.Area)
                 {
-                    if (weapon.AreaWeaponType == weaponProperty.AreaWeaponProperty.WeaponType)
-                        weapon.Upgrade();
+                    if (weapon.AreaWeaponType != weaponProperty.AreaWeaponProperty.WeaponType) continue;
+                    weapon.Upgrade();
+                    break;
                 }
-                else if (weapon.Type == WeaponType.TargetBase && weaponProperty.WeaponType == WeaponType.TargetBase)
+
+                if (weapon.Type == WeaponType.TargetBase && weaponProperty.WeaponType == WeaponType.TargetBase)
                 {
-                    if (weapon.TargetBaseWeaponType == weaponProperty.TargetBaseWeaponProperty.WeaponType)
-                        weapon.Upgrade();
+                    if (weapon.TargetBaseWeaponType != weaponProperty.TargetBaseWeaponProperty.WeaponType) continue;
+                    weapon.Upgrade();
+                    break;
+                }
+            }
+        }
+
+        public bool HasWeapon(WeaponProperty property, out Weapon w)
+        {
+            foreach (var weapon in _weapons)
+            {
+                if (weapon.Type == property.WeaponType && weapon.Type == WeaponType.Area)
+                {
+                    if (weapon.AreaWeaponType == property.AreaWeaponProperty.WeaponType)
+                    {
+                        w = weapon;
+                        return true;
+                    }
+                }
+                else if (weapon.Type == property.WeaponType && weapon.Type == WeaponType.TargetBase)
+                {
+                    if (weapon.TargetBaseWeaponType == property.TargetBaseWeaponProperty.WeaponType)
+                    {
+                        w = weapon;
+                        return true;
+                    }
+                }
+            }
+
+            w = null;
+            return false;
+        }
+
+        public bool HasPassiveItem(PassiveItemType type)
+        {
+            return _passiveItems.Any(item => item.Type == type);
+        }
+
+        public void AddPassiveItem(PassiveItem passiveItem)
+        {
+            _passiveItems.Add(passiveItem);
+            passiveItem.Apply();
+        }
+
+        public void UpgradePassiveItem(PassiveItemType type)
+        {
+            foreach (var passiveItem in _passiveItems)
+            {
+                if (passiveItem.Type == type)
+                {
+                    passiveItem.Apply();
+                    break;
+                }
+            }
+        }
+
+        public void IncreaseRange(float percentage)
+        {
+            foreach (var targetBaseWeapon in _weapons.Where(weapon => weapon.Type == WeaponType.TargetBase)
+                         .Cast<TargetBaseWeapon>())
+            {
+                targetBaseWeapon.Range += targetBaseWeapon.Range * (percentage / 100f);
+            }
+        }
+
+        public void IncreaseDamage(float percentage)
+        {
+            foreach (var weapon in _weapons)
+            {
+                if (weapon.Type == WeaponType.Area)
+                {
+                    var w = (AreaWeapon) weapon;
+                    w.Damage += w.Damage * (percentage / 100f);
+                }
+                else if (weapon.Type == WeaponType.TargetBase)
+                {
+                    var w = (TargetBaseWeapon) weapon;
+                    w.Damage += w.Damage * (percentage / 100f);
                 }
             }
         }

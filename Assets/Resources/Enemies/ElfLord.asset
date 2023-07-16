@@ -19,4 +19,4 @@ MonoBehaviour:
   Speed: 1
   WeaponType: 1
   animator: {fileID: 9100000, guid: 2d65e567425204b5789efcb6f4cc915e, type: 2}
-  DamageMultiplier: 1
+  DamageMultiplier: 2

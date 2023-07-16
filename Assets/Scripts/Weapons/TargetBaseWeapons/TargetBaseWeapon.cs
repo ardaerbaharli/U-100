@@ -88,6 +88,18 @@ namespace Weapons
         public void SetWeapon(WeaponProperty property)
         {
             Property = property;
+            if (property == null)
+            {
+                print("property is null");
+            }
+
+            if (Sprite == null)
+                print("sprite is null");
+
+            if (property.Sprite == null)
+            {
+                print("property sprite is null");
+            }
             
             Sprite = property.Sprite;
             Name = property.Name;
