@@ -76,6 +76,11 @@
 - Bütünleme sınavlarından dolayı bazı toplantılarımızı eksik kişiyle yaptık.
   ![image](https://github.com/ardaerbaharli/U-100/blob/main/3.png)
   ![image](https://github.com/ardaerbaharli/U-100/blob/main/4.png)
+
+  ### Daily Scrum
+  Haberleşme ve toplantı saatlerini WhatsApp üzerinden konuşup toplantıları Discord üzerinden gerçekleştirdik.
+  ### Sprint Review
+  Takımca free assetler üzerinde dungeon temasına en uygun olacak asseti seçtik. Oyun içerisinde "boss" karakterinin hangi olması gerektiğine, ne zaman oyuncunun karşısına çıkacağını tartıştık.
   
   # Sprint 3
 - Görev dağılımları yapıldı.
