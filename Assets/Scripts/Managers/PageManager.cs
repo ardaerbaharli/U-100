@@ -10,7 +10,8 @@ namespace Managers
         MainMenu,
         GamePanel,
         GameOverPanel,
-        PausePanel
+        PausePanel,
+        WinPanel
     }
 
     public class PageManager : MonoBehaviour

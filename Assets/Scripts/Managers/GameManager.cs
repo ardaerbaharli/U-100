@@ -41,7 +41,14 @@ namespace Managers
 
         private void Start()
         {
-            TimeManager.Instance.OnTimeEnded += GameOver;
+            TimeManager.Instance.OnTimeEnded += GameWin;
+        }
+
+        private void GameWin()
+        {
+            Debug.Log("Game Win");
+            GameState = GameState.GameOver;
+            PageManager.Instance.ShowPage(Pages.WinPanel);
         }
 
         public void GameOver()
