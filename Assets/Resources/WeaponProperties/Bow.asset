@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b4c6d8dc3446f38562a48ea115b310, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 6be711f517c964844806ef0d6ffbcdda, type: 3}
   Name: Bow
   WeaponType: 0
   MaxLevel: 10

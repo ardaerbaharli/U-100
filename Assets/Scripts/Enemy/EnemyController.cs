@@ -9,7 +9,7 @@ namespace Enemy
 {
     public class EnemyController : Target
     {
-        [SerializeField] private SpriteRenderer sprite;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject weaponParent;
 
         public bool isFollowingPlayer;
@@ -53,7 +53,7 @@ namespace Enemy
 
         private void FlipSprite()
         {
-            sprite.flipX = !sprite.flipX;
+            spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
         public void ReturnToPool()
@@ -64,7 +64,7 @@ namespace Enemy
         public void SetEnemyProperty(EnemyProperty enemyProperty)
         {
             _enemyProperty = enemyProperty;
-            sprite.sprite = enemyProperty.Sprite;
+            spriteRenderer.sprite = enemyProperty.Sprite;
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
 
@@ -80,6 +80,7 @@ namespace Enemy
         public override void TakeDamage(float damage)
         {
             _currentHealth -= damage;
+            
             if (_currentHealth <= 0)
             {
                 Die();

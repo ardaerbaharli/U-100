@@ -20,17 +20,29 @@ namespace Managers
         private PlayerManager _player;
 
         private List<EnemyController> activeEnemies;
+        private bool _isGameOver;
 
         private void Awake()
         {
             Instance = this;
             _cameraSize = Helpers.Camera.orthographicSize;
             activeEnemies = new List<EnemyController>();
+            _isGameOver = false;
         }
 
         private void Start()
         {
             GameManager.Instance.OnGameStarted += OnGameStarted;
+            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+        }
+
+        private void OnGameStateChanged(GameState state)
+        {
+            if (state == GameState.GameOver)
+            {
+                _isGameOver = true;
+                activeEnemies.ForEach(enemy => enemy.ReturnToPool());
+            }
         }
 
         private void OnGameStarted()
@@ -43,6 +55,7 @@ namespace Managers
         {
             foreach (var wave in levelProperty.Waves)
             {
+                if (_isGameOver) yield break;
                 yield return StartCoroutine(StartWave(wave));
                 yield return new WaitForSeconds(levelProperty.Interval);
             }
@@ -55,6 +68,7 @@ namespace Managers
             foreach (var enemy in enemies)
                 for (var i = 0; i < enemy.value; i++)
                 {
+                    if (_isGameOver) yield break;
                     SpawnEnemy(enemy.key);
                     yield return new WaitForSeconds(wave.SpawnInterval);
                 }
@@ -74,6 +88,7 @@ namespace Managers
             activeEnemies.Add(enemy);
 
             enemy.OnEnemyDied += () => activeEnemies.Remove(enemy);
+            enemy.isDead = false;
             enemy.gameObject.SetActive(true);
 
             enemy.SetEnemyProperty(enemyProperty);
@@ -83,12 +98,13 @@ namespace Managers
         private Vector2 GetPosition()
         {
             // position must be out of the screen but not too far, use camera size to calculate
+            var origin = PlayerManager.Instance.transform.position;
             var xDistance = Random.Range(_cameraSize * 2, 4 * _cameraSize);
             var toLeft = Random.Range(0, 2) == 0;
             float x;
-            x = toLeft ? -xDistance : xDistance;
+            x = origin.x + (toLeft ? -xDistance : xDistance);
 
-            var y = Random.Range(-_cameraSize / 2, _cameraSize / 2);
+            var y = Random.Range(-_cameraSize, _cameraSize);
             var position = new Vector2(x, y);
             return position;
         }

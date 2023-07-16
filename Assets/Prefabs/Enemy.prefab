@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94230cc1aeb9b4d039720afbe903d6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 401778579183195443}
+  spriteRenderer: {fileID: 401778579183195443}
   weaponParent: {fileID: 1373367964960037599}
   isFollowingPlayer: 0
   pooledObject:

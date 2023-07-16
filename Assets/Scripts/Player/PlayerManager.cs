@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
+using UnityEngine.UI;
 using Weapons;
 
 namespace Player
@@ -11,12 +12,24 @@ namespace Player
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Direction characterStartDirection;
         [SerializeField] public GameObject weaponParent;
+        [SerializeField] private Slider healthBar;
 
         public PlayerMovementManager playerMovementManager;
         [SerializeField] private float _maxHealth;
         private BoxCollider2D _collider;
+
+
         private float _currentHealth;
 
+        private float CurrentHealth
+        {
+            get => _currentHealth;
+            set
+            {
+                _currentHealth = value;
+                UpdateHealthBar();
+            }
+        }
 
         private bool _isDead;
         private TargetBaseWeapon _firstWeapon;
@@ -42,7 +55,12 @@ namespace Player
             _weapons.Add(_firstWeapon);
 
             GameManager.Instance.OnGameStarted += OnGameStarted;
-            _currentHealth = _maxHealth;
+            CurrentHealth = _maxHealth;
+        }
+
+        private void UpdateHealthBar()
+        {
+            healthBar.value = CurrentHealth / _maxHealth;
         }
 
         private void OnGameStarted()
@@ -53,8 +71,8 @@ namespace Player
         public override void TakeDamage(float damage)
         {
             if (_isDead) return;
-            _currentHealth -= damage;
-            if (_currentHealth <= 0)
+            CurrentHealth -= damage;
+            if (CurrentHealth <= 0)
             {
                 _isDead = true;
                 GameManager.Instance.GameOver();
@@ -68,10 +86,10 @@ namespace Player
 
         public void Heal(int healAmount)
         {
-            _currentHealth += healAmount;
-            if (_currentHealth > _maxHealth)
+            CurrentHealth += healAmount;
+            if (CurrentHealth > _maxHealth)
             {
-                _currentHealth = _maxHealth;
+                CurrentHealth = _maxHealth;
             }
         }
 

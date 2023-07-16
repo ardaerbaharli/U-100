@@ -43,7 +43,8 @@ namespace Managers
             if (asChild)
             {
                 var child = new GameObject(type.ToString());
-                child.transform.parent = to.transform;
+                child.transform.SetParent(to.transform,false);
+                child.transform.localPosition = Vector3.zero;
                 w = (TargetBaseWeapon) child.AddComponent(t);
             }
             else
@@ -60,10 +61,8 @@ namespace Managers
         {
             var level = 1;
             var properties = GetWeaponProperty(type);
-            var weapon = Instantiate(properties.AreaWeaponProperty.WeaponPrefab, to.transform.position,
-                Quaternion.identity);
-
-            weapon.transform.parent = to.transform;
+            var weapon = Instantiate(properties.AreaWeaponProperty.WeaponPrefab, to.transform,false);
+            weapon.transform.localPosition = Vector3.zero;
 
             var a = weapon.GetComponent<AreaWeapon>();
             a.SetWeapon(properties, weaponTarget);

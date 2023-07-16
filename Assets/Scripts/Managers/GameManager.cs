@@ -2,6 +2,7 @@ using System;
 using NaughtyAttributes;
 using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Weapons;
 
 namespace Managers
@@ -47,7 +48,7 @@ namespace Managers
         {
             Debug.Log("Game Over");
             GameState = GameState.GameOver;
-            // TODO
+            PageManager.Instance.ShowPage(Pages.GameOverPanel);
         }
 
         [Button]
@@ -56,27 +57,32 @@ namespace Managers
             Debug.Log("Game Started");
             GameState = GameState.Game;
             TimeManager.Instance.StartTimer(totalGameTime);
+            PageManager.Instance.ShowPage(Pages.GamePanel);
+
             OnGameStarted?.Invoke();
-            // TODO
         }
 
         public void PauseGame()
         {
             Debug.Log("Game Paused");
+            Time.timeScale = 0;
             GameState = GameState.Paused;
-            // TODO
+            PageManager.Instance.ShowPage(Pages.PausePanel,false);
+        }
+        
+        public void ResumeGame()
+        {
+            Debug.Log("Game Resumed");
+            Time.timeScale = 1;
+            GameState = GameState.Game;
+            PageManager.Instance.HidePage(Pages.PausePanel);
         }
 
-        public void Scored(float score)
-        {
-            Debug.Log("Scored");
-            // TODO
-        }
 
         public void RestartGame()
         {
             Debug.Log("Restart Game");
-            // TODO
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
 #if UNITY_EDITOR

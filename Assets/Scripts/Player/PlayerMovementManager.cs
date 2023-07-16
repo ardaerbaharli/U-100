@@ -22,6 +22,14 @@ namespace Player
             var horizontal = Input.GetAxis("Horizontal");
             var vertical = Input.GetAxis("Vertical");
             var movement = new Vector3(horizontal, vertical, 0);
+            var projectedPosition = transform.position + movement * (speed * Time.deltaTime);
+            // send a raycast on layer Wall at the projected position
+            var hit = Physics2D.Raycast(projectedPosition, Vector2.zero, 0, LayerMask.GetMask("Wall"));
+            if (hit.collider != null)
+            {
+                // if the player is going to collide with a wall, set the movement to 0
+                return;
+            }
             transform.position += movement * (speed * Time.deltaTime);
             if (horizontal > 0 && _direction == Direction.Left)
             {

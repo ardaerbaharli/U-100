@@ -37,7 +37,7 @@ namespace Managers
             if (Instance == null)
                 Instance = this;
 
-            _currentPage = Pages.GamePanel;
+            _currentPage = Pages.MainMenu;
         }
 
         private void Start()

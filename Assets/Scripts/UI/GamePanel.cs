@@ -10,22 +10,32 @@ namespace UI
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI timeText;
         [SerializeField] private Slider pointsSlider;
-        
+        [SerializeField] private Image pauseButtonImage;
+
+        [SerializeField] private Sprite pauseSprite, resumeSprite;
+
 
         private void Start()
         {
-            // Removed temporarily
-            // ScoreManager.Instance.OnScoreChanged += UpdateScore;
             TimeManager.Instance.OnTimeChanged += UpdateTime;
             LevelManager.Instance.OnLevelUp += UpdateLevel;
-            LevelManager.Instance.RemainingPointsChanged+= UpdatePointsSlider;
-            
-            
+            LevelManager.Instance.RemainingPointsChanged += UpdatePointsSlider;
+            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+        }
+
+        private void OnGameStateChanged(GameState obj)
+        {
+            pauseButtonImage.sprite = obj switch
+            {
+                GameState.Paused => resumeSprite,
+                GameState.Game => pauseSprite,
+                _ => pauseButtonImage.sprite
+            };
         }
 
         private void UpdatePointsSlider(float obj)
         {
-            pointsSlider.value = 1-obj;
+            pointsSlider.value = 1 - obj;
         }
 
         private void UpdateLevel(int obj)
@@ -41,6 +51,9 @@ namespace UI
             timeText.text = $"{minutes:00}:{remainingSeconds:00}";
         }
 
-       
+        public void PauseButton()
+        {
+            GameManager.Instance.PauseGame();
+        }
     }
 }
