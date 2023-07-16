@@ -67,3 +67,8 @@
 - Takım elemanlarının bir çoğunun sınav dönemine denk gelmesinden dolayı takım içinde kopukluklar yaşandı.
 - Oyun hikayesini ve konusunu belirlemede çok fazla vakit kaybı yaşandı.
 - İlk sprintte tamamlanamayan görevlerin diğer sprintlerde tamamlanmasına karar verildi.
+
+  # Sprint 2
+- Free assetler üzerinde takımca karar verdik.
+- Oyun adını düşündük ve hep beraber içerisinde "dungeon" kelimesinin geçmesine karar kıldık
+- Puanlamadan dolayı 3D bir oyun yapıp yapamayacağımızı tartıştık.
