@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Collectables;
 using Managers;
 using Player;
@@ -30,6 +31,8 @@ namespace Enemy
         public Action<EnemyProperty> OnPropertySet;
         private Animator _animator;
         private bool _isBoss;
+        private Sprite _onHitSprite;
+
 
         private void Awake()
         {
@@ -68,6 +71,7 @@ namespace Enemy
             spriteRenderer.sprite = enemyProperty.Sprite;
             _maxHealth = enemyProperty.Health;
             _currentHealth = _maxHealth;
+            _onHitSprite = enemyProperty.OnHitSprite;
 
             _isBoss = enemyProperty.IsBoss;
             _animator.runtimeAnimatorController = enemyProperty.animator;
@@ -76,17 +80,26 @@ namespace Enemy
             w.Damage *= enemyProperty.DamageMultiplier;
             w.WeaponTarget = WeaponTarget.Player;
             OnPropertySet?.Invoke(_enemyProperty);
+
+            _cached = true;
         }
 
 
         public override void TakeDamage(float damage)
         {
             _currentHealth -= damage;
+            if (_currentHealth <= 0) Die();
+            else StartCoroutine(OnHit());
+        }
 
-            if (_currentHealth <= 0)
-            {
-                Die();
-            }
+        private IEnumerator OnHit()
+        {
+            // stop animation
+            _animator.enabled = false;
+            spriteRenderer.sprite = _onHitSprite;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.sprite = _enemyProperty.Sprite;
+            _animator.enabled = true;
         }
 
         private void Die()
@@ -97,6 +110,16 @@ namespace Enemy
                 CollectableManager.Instance.SpawnCollectable(CollectableType.Chest, transform.position);
             isDead = true;
             ReturnToPool();
+        }
+
+        private bool _cached;
+
+        private void OnDisable()
+        {
+            if (!_cached) return;
+            StopAllCoroutines();
+            spriteRenderer.sprite = _enemyProperty.Sprite;
+            _animator.enabled = true;
         }
     }
 }

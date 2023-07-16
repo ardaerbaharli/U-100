@@ -327,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 2580523471083978967, guid: 903031c9106de4e01baa7c0889d93078, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 883089f15fa3c4c68b570cf7aa3ab98d, type: 2}
+      objectReference: {fileID: 9100000, guid: 8bd27702f96034c238f2d839c19af5de, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 903031c9106de4e01baa7c0889d93078, type: 3}
 --- !u!1 &85948803
@@ -791,15 +791,15 @@ MonoBehaviour:
   objectToPool:
   - type: 0
     gameObject: {fileID: 401778579044661314, guid: 903031c9106de4e01baa7c0889d93078, type: 3}
-    amount: 200
+    amount: 300
     parent: {fileID: 1215499964}
   - type: 2
     gameObject: {fileID: 5634089730518767722, guid: 18300539b93914f7792e919b8874acdb, type: 3}
-    amount: 20
+    amount: 200
     parent: {fileID: 272838040}
   - type: 3
     gameObject: {fileID: 5634089730518767722, guid: 3544b9451766e4280846edbe6abe0f7b, type: 3}
-    amount: 150
+    amount: 200
     parent: {fileID: 272838040}
   - type: 4
     gameObject: {fileID: 8541979522467392765, guid: 9ea2883e9608046d8b1f43584419a509, type: 3}

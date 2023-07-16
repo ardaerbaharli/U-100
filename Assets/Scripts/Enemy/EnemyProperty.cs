@@ -9,6 +9,7 @@ namespace Enemy
     public class EnemyProperty : ScriptableObject
     {
         public Sprite Sprite;
+        public Sprite OnHitSprite;
         public EnemyType Type;
         public bool IsBoss;
         public float Health;

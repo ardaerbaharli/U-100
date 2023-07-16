@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ElfLord
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: c4aaa6a8229a64b2893b4cde257a2569, type: 3}
+  OnHitSprite: {fileID: 21300000, guid: 91f2540833ca24d0c81d4c76f34a98e2, type: 3}
   Type: 4
   IsBoss: 0
   Health: 2
