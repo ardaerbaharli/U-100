@@ -81,5 +81,6 @@
 - Görev dağılımları yapıldı.
 - Oyun haritası yapıldı, karakterler eklendi.
 - Oyunumuz sonuç olarak en son haline ulaştı.
+  
  ![image](https://github.com/ardaerbaharli/U-100/blob/main/1.png)
 
