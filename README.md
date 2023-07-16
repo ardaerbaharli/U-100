@@ -48,6 +48,7 @@
 - Takım üyelerinin repoya eklenmesi
 - Oyun fikirlerinin tartışılması
 - GDD örnekleri incelenmesi
+  ![image](https://github.com/ardaerbaharli/U-100/blob/main/2.png)
 
 <img width="952" alt="image" src="https://github.com/sudeyaprak/U-100/assets/119863892/2d177492-489e-4e10-89cb-fd1c56bcbba3">
 
@@ -74,8 +75,11 @@
 - Puanlamadan dolayı 3D bir oyun yapıp yapamayacağımızı tartıştık.
 - Bütünleme sınavlarından dolayı bazı toplantılarımızı eksik kişiyle yaptık.
   ![image](https://github.com/ardaerbaharli/U-100/blob/main/3.png)
+  ![image](https://github.com/ardaerbaharli/U-100/blob/main/4.png)
   
   # Sprint 3
 - Görev dağılımları yapıldı.
 - Oyun haritası yapıldı, karakterler eklendi.
 - Oyunumuz sonuç olarak en son haline ulaştı.
+ ![image](https://github.com/ardaerbaharli/U-100/blob/main/1.png)
+
