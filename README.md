@@ -47,7 +47,7 @@
 - Github reponun oluşturulması
 - Takım üyelerinin repoya eklenmesi
 - Oyun fikirlerinin tartışılması
-- GDD örnekleri incelenmesi
+- GDD örnekleri incelenmesi ve hazırlanması
   ![image](https://github.com/ardaerbaharli/U-100/blob/main/2.png)
 
 <img width="952" alt="image" src="https://github.com/sudeyaprak/U-100/assets/119863892/2d177492-489e-4e10-89cb-fd1c56bcbba3">
